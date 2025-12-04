@@ -58,6 +58,11 @@ _global_script_classes=[ {
 "class": "StoneObstacle",
 "language": "GDScript",
 "path": "res://Objects/Obstacles/StoneObstacle/StoneObstacle1.gd"
+}, {
+"base": "DestructibleProp",
+"class": "StickPersonEnemy",
+"language": "GDScript",
+"path": "res://Objects/Enemies/StickPersonEnemy.gd"
 } ]
 _global_script_class_icons={
 "DestructibleProp": "",
@@ -69,13 +74,14 @@ _global_script_class_icons={
 "Projectile": "",
 "RubbleChunk": "",
 "StickClone": "",
-"StoneObstacle": ""
+"StoneObstacle": "",
+"StickPersonEnemy": ""
 }
 
 [application]
 
 config/name="Toppler"
-run/main_scene="res://Scenes/TopplerMenu/TopplerMenu.tscn"
+run/main_scene="res://Scenes/TopplerMenu/EnhancedTopplerMenu.tscn"
 config/icon="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Aliens/alienGreen_square.png"
 
 [autoload]
