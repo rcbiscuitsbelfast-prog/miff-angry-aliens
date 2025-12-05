@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/FaceProjectile/FaceProjectile.gd" type="Script" id=1]
+[ext_resource path="res://New/fighter_Idle_0001.png" type="Texture" id=2]
+[ext_resource path="res://Objects/FaceProjectile/SquashStretch.gd" type="Script" id=3]
+[ext_resource path="res://Assets/graphics/kenney2/particle.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[node name="FaceProjectile" type="RigidBody2D"]
+groups = [
+"projectile"
+]
+mass = 0.8
+script = ExtResource( 1 )
+face_texture = ExtResource( 2 )
+
+[node name="FaceSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Trail" type="CPUParticles2D" parent="."]
+texture = ExtResource( 4 )
+emitting = false
+lifetime = 1.0
+direction = 0.0
+spread = 30.0
+initial_velocity = 50.0
+angular_velocity = 10.0
+orbit_velocity = 0.0
+gravity = Vector2( 0, 0 )
+scale_amount = 2.0
+scale_amount_random = 0.5
+
+[node name="SquashStretch" type="Node" parent="."]
+script = ExtResource( 3 )
