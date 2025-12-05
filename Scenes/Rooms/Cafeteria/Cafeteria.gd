@@ -17,58 +17,39 @@ func _ready():
 	setup_cafeteria()
 
 func setup_cafeteria():
-	# Create dynamic props if not already in scene
-	if props_container.get_child_count() == 0:
-		spawn_cafeteria_props()
+	# Load first projectile into slingshot
+	load_first_projectile()
 
-func spawn_cafeteria_props():
-	# Create lunch tables
-	for i in range(4):
-		var table = create_prop(
-			DestructibleProp.PropType.TABLE,
-			Vector2(200 + i * 150, 350),
-			"Table " + str(i + 1),
-			100
-		)
-		props_container.add_child(table)
+func load_first_projectile():
+	var slingshot = face_launcher.get_node_or_null("Slingshot")
+	if not slingshot:
+		return
 	
-	# Create serving station
-	var serving_station = create_prop(
-		DestructibleProp.PropType.DESK,
-		Vector2(150, 200),
-		"Serving Station",
-		200
-	)
-	props_container.add_child(serving_station)
+	# Create face projectile for launch
+	var face_projectile = preload("res://Objects/FaceProjectile/FaceProjectile.tscn").instance()
+	face_projectile.global_position = slingshot.rest_position.global_position
 	
-	# Create vending machine
-	var vending = create_prop(
-		DestructibleProp.PropType.VENDING_MACHINE,
-		Vector2(700, 300),
-		"Vending Machine",
-		250
-	)
-	props_container.add_child(vending)
+	# Apply player face texture if available
+	var player_profile = get_node_or_null("/root/PlayerProfile")
+	if player_profile and player_profile.face_texture:
+		face_projectile.face_texture = player_profile.face_texture
 	
-	# Create trophy shelf
-	var shelf = create_prop(
-		DestructibleProp.PropType.BOOKSHELF,
-		Vector2(50, 250),
-		"Trophy Shelf",
-		150
-	)
-	props_container.add_child(shelf)
+	add_child(face_projectile)
+	slingshot.load_projectile(face_projectile)
 
-func create_prop(prop_type: int, position: Vector2, name: String, value: int) -> DestructibleProp:
-	var prop = preload("res://Objects/Props/DestructibleProp.tscn").instance()
-	prop.name = name
-	prop.global_position = position
-	prop.prop_type = prop_type
-	prop.max_hitpoints = 2 + randi() % 2  # 2-3 hitpoints
-	prop.current_hitpoints = prop.max_hitpoints
+func _on_prop_destroyed(prop: DestructibleProp, impact_force: float):
+	var prop_value = calculate_prop_value(prop)
+	current_destruction_score += prop_value
 	
-	# Connect signals
-	prop.connect("prop_destroyed", self, "_on_prop_destroyed", [prop, value])
-	prop.connect("prop_damaged", self, "_on_prop_damaged", [prop])
+	# Add to rage system
+	if rage_system:
+		rage_system.add_destruction_points(prop_value, impact_force)
 	
-	return prop
+	print("Prop destroyed! Score: %d, Total: %d" % [prop_value, current_destruction_score])
+	
+	# Check if all props are destroyed
+	check_room_completion()
+
+func _on_prop_damaged(prop: DestructibleProp, damage: int):
+	# Handle prop damage visual feedback
+	pass

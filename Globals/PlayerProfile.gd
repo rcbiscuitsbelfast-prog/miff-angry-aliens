@@ -1,17 +1,15 @@
 extends Node
 
-# Global player profile management
-extends Node
-
 signal face_changed(new_face_texture)
 signal cosmetics_updated()
 
 # Face data
 var face_texture: Texture setget set_face_texture
 var face_captured = false
+var face_points: Dictionary = {}
 
 # Face emotions
-var current_emotion = "happy" setget , setget 
+var current_emotion = "happy" 
 
 # Face accessories
 var unlocked_hats = ["default"]
@@ -51,6 +49,13 @@ func set_face_texture(texture: Texture):
     face_captured = true
     emit_signal("face_changed", face_texture)
     save_profile()
+
+func set_face_points(points: Dictionary):
+    face_points = points
+    save_profile()
+
+func get_face_points() -> Dictionary:
+    return face_points
 
 func capture_face_from_camera():
     # TODO: Implement camera capture for mobile

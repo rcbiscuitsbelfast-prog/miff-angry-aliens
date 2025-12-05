@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Rooms/RoomBase.gd" type="Script" id=1]
 [ext_resource path="res://Globals/RageSystem.gd" type="Script" id=2]
 [ext_resource path="res://Objects/Slingshot/Slingshot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Levels/LevelBase/CameraFocus.gd" type="Script" id=4]
+[ext_resource path="res://Objects/Camera/EnhancedCameraFocus.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 80 )
