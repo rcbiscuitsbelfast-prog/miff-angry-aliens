@@ -1,8 +1,5 @@
 extends Node
 
-# Global player profile management
-extends Node
-
 signal face_changed(new_face_texture)
 signal cosmetics_updated()
 
@@ -11,7 +8,7 @@ var face_texture: Texture setget set_face_texture
 var face_captured = false
 
 # Face emotions
-var current_emotion = "happy" setget , setget 
+var current_emotion = "happy" 
 
 # Face accessories
 var unlocked_hats = ["default"]
