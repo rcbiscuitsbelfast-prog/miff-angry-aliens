@@ -13,7 +13,7 @@ func _integrate_forces(state):
 		if collider is RigidBody2D:
 			var impact_momentum = collider.mass * collider.linear_velocity - mass * linear_velocity
 			if impact_momentum.length() >= get_destruction_threshold(collider):
-				emit_signal("destroyed", self, collider, impact_momentum)
+				destroyed.emit(self, collider, impact_momentum)
 
 
 func get_destruction_threshold(collider_type: RigidBody2D):

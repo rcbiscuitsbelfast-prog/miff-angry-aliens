@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/3aae99f4-81c7-422c-8650-6deea564da11.png-84e5e76b2b50a37cea392c7666939602.stex"
+path="res://.import/3aae99f4-81c7-422c-8650-6deea564da11.png-8aef621aeffc837ac88a05679f7c01ee.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://New/3aae99f4-81c7-422c-8650-6deea564da11.png"
-dest_files=[ "res://.import/3aae99f4-81c7-422c-8650-6deea564da11.png-84e5e76b2b50a37cea392c7666939602.stex" ]
+dest_files=[ "res://.import/3aae99f4-81c7-422c-8650-6deea564da11.png-8aef621aeffc837ac88a05679f7c01ee.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

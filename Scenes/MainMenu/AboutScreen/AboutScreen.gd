@@ -1,7 +1,7 @@
 extends ColorRect
 
-onready var back_button = $NinePatchRect/MarginContainer/VBoxContainer/Back
-onready var github_button = $NinePatchRect/MarginContainer/VBoxContainer/Github
+@onready var back_button = $NinePatchRect/MarginContainer/VBoxContainer/Back
+@onready var github_button = $NinePatchRect/MarginContainer/VBoxContainer/Github
 
 
 func _on_Github_pressed():

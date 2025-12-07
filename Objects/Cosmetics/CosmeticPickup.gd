@@ -5,12 +5,12 @@ extends Area2D
 
 signal cosmetic_collected(cosmetic_type, cosmetic_name)
 
-export var cosmetic_type = "hat"  # hat, moustache, wig, glasses
-export var cosmetic_name = "default"
-export var pickup_sound: AudioStream
+@export var cosmetic_type = "hat"  # hat, moustache, wig, glasses
+@export var cosmetic_name = "default"
+@export var pickup_sound: AudioStream
 
-onready var sprite = $Sprite
-onready var audio_player = $AudioStreamPlayer
+@onready var sprite = $Sprite
+@onready var audio_player = $AudioStreamPlayer
 
 func _ready():
 	# Connect detection
@@ -64,7 +64,7 @@ func _on_pickup(body: Node):
 			audio_player.play()
 		
 		# Emit signal
-		emit_signal("cosmetic_collected", cosmetic_type, cosmetic_name)
+		cosmetic_collected.emit(cosmetic_type, cosmetic_name)
 		
 		# Visual feedback
 		play_pickup_effect()

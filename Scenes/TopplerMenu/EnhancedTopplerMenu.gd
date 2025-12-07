@@ -3,16 +3,16 @@ extends Control
 # Enhanced Toppler Main Menu
 # Monetization, face customization, and game options
 
-onready var title = $Title
-onready var play_button = $VBoxContainer/PlayButton
-onready var customize_button = $VBoxContainer/CustomizeButton
-onready var options_button = $VBoxContainer/OptionsButton
-onready var unlock_button = $VBoxContainer/UnlockButton
-onready var face_display = $FaceDisplay
+@onready var title = $Title
+@onready var play_button = $VBoxContainer/PlayButton
+@onready var customize_button = $VBoxContainer/CustomizeButton
+@onready var options_button = $VBoxContainer/OptionsButton
+@onready var unlock_button = $VBoxContainer/UnlockButton
+@onready var face_display = $FaceDisplay
 
 # Face customization
-onready var face_emotion = $FaceDisplay/EmotionWheel
-onready var face_accessories = $FaceDisplay/AccessoriesPanel
+@onready var face_emotion = $FaceDisplay/EmotionWheel
+@onready var face_accessories = $FaceDisplay/AccessoriesPanel
 
 # Monetization
 var ads_removed = false
@@ -33,13 +33,13 @@ func setup_ui():
     
     # Connect all buttons
     if play_button:
-        play_button.connect("pressed", self, "_on_play_pressed")
+        play_button.pressed.connect(self._on_play_pressed)
     if customize_button:
-        customize_button.connect("pressed", self, "_on_customize_pressed")
+        customize_button.pressed.connect(self._on_customize_pressed)
     if options_button:
-        options_button.connect("pressed", self, "_on_options_pressed")
+        options_button.pressed.connect(self._on_options_pressed)
     if unlock_button:
-        unlock_button.connect("pressed", self, "_on_unlock_pressed")
+        unlock_button.pressed.connect(self._on_unlock_pressed)
 
 func update_face_display():
     if face_display and PlayerProfile.face_texture:
@@ -116,21 +116,21 @@ func show_customization_menu():
     var face_capture_btn = Button.new()
     face_capture_btn.text = "Capture New Face"
     face_capture_btn.custom_minimum_size = Vector2(300, 50)
-    face_capture_btn.connect("pressed", self, "_on_face_capture_pressed")
+    face_capture_btn.pressed.connect(self._on_face_capture_pressed)
     vbox.add_child(face_capture_btn)
     
     # Cosmetics Button
     var cosmetics_btn = Button.new()
     cosmetics_btn.text = "Customize Cosmetics"
     cosmetics_btn.custom_minimum_size = Vector2(300, 50)
-    cosmetics_btn.connect("pressed", self, "_on_cosmetics_pressed")
+    cosmetics_btn.pressed.connect(self._on_cosmetics_pressed)
     vbox.add_child(cosmetics_btn)
     
     # Emotions Button
     var emotions_btn = Button.new()
     emotions_btn.text = "Change Face Emotion"
     emotions_btn.custom_minimum_size = Vector2(300, 50)
-    emotions_btn.connect("pressed", self, "_on_emotions_pressed")
+    emotions_btn.pressed.connect(self._on_emotions_pressed)
     vbox.add_child(emotions_btn)
     
     dialog.add_child(vbox)
@@ -143,9 +143,9 @@ func _on_face_capture_pressed():
 
 func _on_cosmetics_pressed():
     # Load cosmetics menu
-    var cosmetics_menu = load("res://Scenes/CosmeticMenu/CosmeticMenuScene.tscn").instance()
+    var cosmetics_menu = load("res://Scenes/CosmeticMenu/CosmeticMenuScene.tscn").instantiate()
     add_child(cosmetics_menu)
-    cosmetics_menu.connect("menu_closed", self, "_on_cosmetic_menu_closed")
+    cosmetics_menu.menu_closed.connect(self._on_cosmetic_menu_closed)
 
 func _on_emotions_pressed():
     show_face_customization_dialog()
@@ -175,7 +175,7 @@ func show_face_customization_dialog():
         btn.custom_minimum_size = Vector2(80, 30)
         if emotion == PlayerProfile.get("current_emotion", "happy"):
             btn.modulate = Color.YELLOW
-        btn.connect("pressed", self, "_on_emotion_selected", [emotion])
+        btn.pressed.connect(self._on_emotion_selected.bind(emotion))
         emotion_hbox.add_child(btn)
     
     vbox.add_child(emotion_hbox)
@@ -194,7 +194,7 @@ func show_face_customization_dialog():
         btn.custom_minimum_size = Vector2(80, 25)
         if moustache == PlayerProfile.get("current_moustache", "none"):
             btn.modulate = Color.YELLOW
-        btn.connect("pressed", self, "_on_moustache_selected", [moustache])
+        btn.pressed.connect(self._on_moustache_selected.bind(moustache))
         moustache_hbox.add_child(btn)
     
     vbox.add_child(moustache_hbox)
@@ -208,7 +208,7 @@ func show_face_customization_dialog():
         btn.custom_minimum_size = Vector2(80, 25)
         if wig == PlayerProfile.get("current_wig", "none"):
             btn.modulate = Color.YELLOW
-        btn.connect("pressed", self, "_on_wig_selected", [wig])
+        btn.pressed.connect(self._on_wig_selected.bind(wig))
         wig_hbox.add_child(btn)
     
     vbox.add_child(wig_hbox)
@@ -222,7 +222,7 @@ func show_face_customization_dialog():
         btn.custom_minimum_size = Vector2(80, 25)
         if glasses_type == PlayerProfile.get("current_glasses", "none"):
             btn.modulate = Color.YELLOW
-        btn.connect("pressed", self, "_on_glasses_selected", [glasses_type])
+        btn.pressed.connect(self._on_glasses_selected.bind(glasses_type))
         glasses_hbox.add_child(btn)
     
     vbox.add_child(glasses_hbox)
@@ -230,7 +230,7 @@ func show_face_customization_dialog():
     # Face capture button
     var capture_btn = Button.new()
     capture_btn.text = "📷 Capture Face"
-    capture_btn.connect("pressed", self, "_on_face_capture_pressed")
+    capture_btn.pressed.connect(self._on_face_capture_pressed)
     vbox.add_child(capture_btn)
     
     dialog.add_child(vbox)
@@ -252,12 +252,12 @@ func show_options_dialog():
     
     var shake_btn = Button.new()
     shake_btn.text = "Screen Shake: " + ("ON" if PlayerProfile.get("screen_shake", true) else "OFF")
-    shake_btn.connect("pressed", self, "_on_shake_toggled")
+    shake_btn.pressed.connect(self._on_shake_toggled)
     camera_hbox.add_child(shake_btn)
     
     var follow_btn = Button.new()
     follow_btn.text = "Smooth Follow: " + ("ON" if PlayerProfile.get("smooth_follow", true) else "OFF")
-    follow_btn.connect("pressed", self, "_on_follow_toggled")
+    follow_btn.pressed.connect(self._on_follow_toggled)
     camera_hbox.add_child(follow_btn)
     
     vbox.add_child(camera_hbox)
@@ -271,12 +271,12 @@ func show_options_dialog():
     
     var music_btn = Button.new()
     music_btn.text = "Music: " + ("ON" if PlayerProfile.get("music_enabled", true) else "OFF")
-    music_btn.connect("pressed", self, "_on_music_toggled")
+    music_btn.pressed.connect(self._on_music_toggled)
     audio_hbox.add_child(music_btn)
     
     var sfx_btn = Button.new()
     sfx_btn.text = "SFX: " + ("ON" if PlayerProfile.get("sfx_enabled", true) else "OFF")
-    sfx_btn.connect("pressed", self, "_on_sfx_toggled")
+    sfx_btn.pressed.connect(self._on_sfx_toggled)
     audio_hbox.add_child(sfx_btn)
     
     vbox.add_child(audio_hbox)
@@ -285,7 +285,7 @@ func show_options_dialog():
     var reset_btn = Button.new()
     reset_btn.text = "\nReset All Progress"
     reset_btn.modulate = Color.RED
-    reset_btn.connect("pressed", self, "_on_reset_progress")
+    reset_btn.pressed.connect(self._on_reset_progress)
     vbox.add_child(reset_btn)
     
     dialog.add_child(vbox)

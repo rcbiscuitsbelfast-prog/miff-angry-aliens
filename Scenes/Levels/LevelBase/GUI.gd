@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var vs = get_viewport().size
-onready var score := $Score
+@onready var vs = get_viewport().size
+@onready var score := $Score
 
 
 func _ready():
@@ -9,7 +9,7 @@ func _ready():
 	score.score_value = 0
 	score.scale = Vector2(0.4, 0.4)
 	score.grow_direction = "left"
-	get_tree().connect("screen_resized", self, "_on_screen_resized")
+	get_tree().screen_resized.connect(self._on_screen_resized)
 	_on_screen_resized()
 
 

@@ -1,10 +1,10 @@
 extends ColorRect
 
-onready var aliens = $Aliens
-onready var metal_box = $MetalBox
-onready var tween = $Tween
-onready var timer = $Timer
-onready var ground_hit = $Audio/HitSound
+@onready var aliens = $Aliens
+@onready var metal_box = $MetalBox
+@onready var tween = $Tween
+@onready var timer = $Timer
+@onready var ground_hit = $Audio/HitSound
 
 
 func _ready():
@@ -73,7 +73,7 @@ func _on_MetalBox_pressed():
 		return
 	t.interpolate_property(metal_box, "rect_position:y", metal_box.rect_position.y, 800, 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 	t.start()
-	t.connect("tween_completed", self, "_on_metal_box_tween_completed")
+	t.tween_completed.connect(self._on_metal_box_tween_completed)
 
 
 func _on_metal_box_tween_completed(a, b):

@@ -1,7 +1,7 @@
 extends Node
 
 # Squash & Stretch animation controller for face projectiles
-onready var sprite = get_parent().get_node("FaceSprite")
+@onready var sprite = get_parent().get_node("FaceSprite")
 var impact_tween: Tween
 
 func _ready():

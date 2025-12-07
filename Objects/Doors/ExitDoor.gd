@@ -1,8 +1,8 @@
 class_name ExitDoor
 extends Area2D
 
-export var locked = true
-export var unlock_animation_time = 0.5
+@export var locked = true
+@export var unlock_animation_time = 0.5
 
 var sprite: Sprite
 var collision_shape: CollisionShape2D
@@ -23,7 +23,7 @@ func unlock():
 	
 	is_unlocked = true
 	locked = false
-	emit_signal("door_unlocked")
+	door_unlocked.emit()
 	
 	play_unlock_animation()
 
@@ -52,6 +52,6 @@ func update_door_state():
 
 func _on_body_entered(body: Node):
 	if is_unlocked or not locked:
-		emit_signal("door_entered", body)
+		door_entered.emit(body)
 		if body.has_method("complete_room"):
 			body.complete_room()

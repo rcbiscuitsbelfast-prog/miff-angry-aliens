@@ -1,6 +1,6 @@
 extends TextureButton
 tool
-export(String) var text setget _set_btn_text
+@export var text: String setget _set_btn_text
 
 
 func _ready():
@@ -13,7 +13,7 @@ func _unhandled_input(event):
 	# fix button on smartphone
 	if event is InputEventScreenTouch:
 		if _is_btn_pressed(self, event):
-			emit_signal("pressed")
+			pressed.emit()
 
 
 func _is_btn_pressed(btn: BaseButton, event: InputEventScreenTouch):

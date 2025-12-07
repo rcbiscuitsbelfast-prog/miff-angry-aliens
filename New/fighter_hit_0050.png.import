@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fighter_hit_0050.png-1076c33cefd8db8cc15fa12504c785d6.stex"
+path="res://.import/fighter_hit_0050.png-398f1202b5b1729c9835c450ae433fe4.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://New/fighter_hit_0050.png"
-dest_files=[ "res://.import/fighter_hit_0050.png-1076c33cefd8db8cc15fa12504c785d6.stex" ]
+dest_files=[ "res://.import/fighter_hit_0050.png-398f1202b5b1729c9835c450ae433fe4.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

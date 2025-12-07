@@ -1,5 +1,5 @@
 class_name StickClone
-extends KinematicBody2D
+extends CharacterBody2D
 
 # Movement constants
 const WALK_SPEED = 150
@@ -12,7 +12,6 @@ enum State { ENTERING, WAITING, TRAVERSING, EXITING, CLIMBING }
 var current_state = State.ENTERING
 
 # Movement
-var velocity = Vector2.ZERO
 var is_jumping = false
 var can_climb = false
 var climb_target: Node
@@ -21,10 +20,10 @@ var climb_target: Node
 var facing_right = true
 
 # Components
-onready var sprite = $AnimatedSprite
-onready var face_sprite = $FaceSprite
-onready var climb_prompt = $ClimbPrompt
-onready var camera = $Camera2D
+@onready var sprite = $AnimatedSprite
+@onready var face_sprite = $FaceSprite
+@onready var climb_prompt = $ClimbPrompt
+@onready var camera = $Camera2D
 
 func _ready():
     add_to_group("player")
@@ -69,7 +68,7 @@ func handle_traversal_input(delta):
         start_climbing()
     
     # Move and slide
-    velocity = move_and_slide(velocity, Vector2.UP)
+    move_and_slide()
     
     # Update animations
     update_traversal_animation()
@@ -87,7 +86,7 @@ func handle_climbing(delta):
     velocity = direction * CLIMB_SPEED
     
     # Climb movement
-    move_and_slide(velocity)
+    move_and_slide()
     
     # Check if reached climb target
     if global_position.distance_to(climb_target.global_position) < 10:
@@ -136,6 +135,10 @@ func idle_behavior():
     velocity = Vector2.ZERO
     play_animation("idle")
 
+# Set up_direction property for CharacterBody2D
+func _enter_tree():
+    up_direction = Vector2.UP
+
 func walk_to_exit():
     current_state = State.EXITING
     play_animation("walk")
@@ -167,7 +170,7 @@ func play_animation(anim_name: String):
     if sprite:
         sprite.flip_h = not facing_right
 
-func apply_face_customization(face_texture: Texture):
+func apply_face_customization(face_texture: Texture2D):
     if face_sprite:
         face_sprite.texture = face_texture
 

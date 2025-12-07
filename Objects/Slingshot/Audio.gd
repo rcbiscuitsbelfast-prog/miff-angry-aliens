@@ -1,9 +1,9 @@
 extends Node
 
-onready var aiming = $Aiming
-onready var released = $Released
-onready var swish = $Swish
-onready var slingshot = get_parent()
+@onready var aiming = $Aiming
+@onready var released = $Released
+@onready var swish = $Swish
+@onready var slingshot = get_parent()
 
 var last_projectile_pos = Vector2()
 

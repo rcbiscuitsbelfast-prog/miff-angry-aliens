@@ -28,7 +28,7 @@ func setup_combo_timer():
     add_child(combo_timer)
     combo_timer.wait_time = 2.0  # 2 seconds to continue combo
     combo_timer.one_shot = true
-    combo_timer.connect("timeout", self, "_on_combo_timeout")
+    combo_timer.timeout.connect(self._on_combo_timeout)
 
 func add_destruction_points(prop_value: int, impact_force: float = 0):
     props_destroyed_combo += 1
@@ -53,8 +53,8 @@ func add_destruction_points(prop_value: int, impact_force: float = 0):
     check_rage_thresholds()
     
     # Emit signals
-    emit_signal("rage_changed", current_rage, max_rage)
-    emit_signal("combo_changed", props_destroyed_combo, combo_multiplier)
+    rage_changed.emit(current_rage, max_rage)
+    combo_changed.emit(props_destroyed_combo, combo_multiplier)
 
 func check_rage_thresholds():
     var new_rage_level = 1
@@ -65,13 +65,13 @@ func check_rage_thresholds():
     
     if new_rage_level > rage_level:
         rage_level = new_rage_level
-        emit_signal("rage_threshold_reached", rage_level)
+        rage_threshold_reached.emit(rage_level)
 
 func _on_combo_timeout():
     # Reset combo when timer expires
     props_destroyed_combo = 0
     combo_multiplier = 1.0
-    emit_signal("combo_changed", 0, 1.0)
+    combo_changed.emit(0, 1.0)
 
 func get_rage_percentage() -> float:
     return current_rage / max_rage
@@ -98,7 +98,7 @@ func get_rage_color() -> Color:
 func consume_rage(amount: float) -> bool:
     if current_rage >= amount:
         current_rage -= amount
-        emit_signal("rage_changed", current_rage, max_rage)
+        rage_changed.emit(current_rage, max_rage)
         
         # Check if rage level decreased
         check_rage_thresholds()
@@ -112,8 +112,8 @@ func reset_rage():
     combo_multiplier = 1.0
     combo_timer.stop()
     
-    emit_signal("rage_changed", current_rage, max_rage)
-    emit_signal("combo_changed", 0, 1.0)
+    rage_changed.emit(current_rage, max_rage)
+    combo_changed.emit(0, 1.0)
 
 func get_combo_description() -> String:
     match props_destroyed_combo:

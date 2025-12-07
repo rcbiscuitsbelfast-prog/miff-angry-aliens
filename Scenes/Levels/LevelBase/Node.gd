@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var level_placeholder = $Level1
+@onready var level_placeholder = $Level1
 
 
 func _ready():

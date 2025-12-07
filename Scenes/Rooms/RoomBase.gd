@@ -4,9 +4,9 @@ extends Node2D
 class_name Room
 
 # Room configuration
-export(String) var room_name = "Untitled Room"
-export(int) var target_destruction_score = 5000
-export(bool) var has_bonus_level = false
+@export var room_name: String = "Untitled Room"
+@export var target_destruction_score: int = 5000
+@export var has_bonus_level: bool = false
 export(PackedScene) var bonus_level_scene
 
 # Room state
@@ -14,15 +14,15 @@ var current_destruction_score = 0
 var all_props_destroyed = false
 
 # Room components
-onready var spawn_point = $SpawnPoint
-onready var exit_door = $ExitDoor
-onready var props_container = $Props
-onready var face_launcher = $FaceLauncher
-onready var player_spawn = $PlayerSpawn
+@onready var spawn_point = $SpawnPoint
+@onready var exit_door = $ExitDoor
+@onready var props_container = $Props
+@onready var face_launcher = $FaceLauncher
+@onready var player_spawn = $PlayerSpawn
 
 # Systems
-onready var rage_system = $RageSystem
-onready var camera_focus = $CameraFocus
+@onready var rage_system = $RageSystem
+@onready var camera_focus = $CameraFocus
 
 func _ready():
     # Connect signals
@@ -36,19 +36,19 @@ func setup_room_connections():
     if face_launcher:
         var slingshot = face_launcher.get_node_or_null("Slingshot")
         if slingshot:
-            slingshot.connect("projectile_launched", self, "_on_projectile_launched")
+            slingshot.projectile_launched.connect(self._on_projectile_launched)
     
     # Connect exit door
     if exit_door:
-        exit_door.connect("body_entered", self, "_on_exit_reached")
-        exit_door.connect("door_unlocked", self, "_on_exit_door_unlocked")
+        exit_door.body_entered.connect(self._on_exit_reached)
+        exit_door.door_unlocked.connect(self._on_exit_door_unlocked)
     
     # Connect all destructible props
     if props_container:
         for prop in props_container.get_children():
             if prop is DestructibleProp:
-                prop.connect("prop_destroyed", self, "_on_prop_destroyed")
-                prop.connect("prop_damaged", self, "_on_prop_damaged")
+                prop.prop_destroyed.connect(self._on_prop_destroyed)
+                prop.prop_damaged.connect(self._on_prop_damaged)
 
 func initialize_room():
     # Reset room state
@@ -139,7 +139,7 @@ func start_traversal_phase():
     # Called when face projectile phase ends
     # Spawn stick clone for traversal
     if player_spawn:
-        var player = preload("res://Objects/StickClone/StickClone.tscn").instance()
+        var player = preload("res://Objects/StickClone/StickClone.tscn").instantiate()
         player.global_position = player_spawn.global_position
         add_child(player)
         
@@ -160,7 +160,7 @@ func get_remaining_score() -> int:
 
 func _on_projectile_launched(projectile: Projectile):
     if projectile:
-        projectile.connect("body_entered", self, "_on_projectile_collision", [projectile])
+        projectile.body_entered.connect(self._on_projectile_collision.bind(projectile))
 
 func _on_projectile_collision(body: Node, projectile: Projectile):
     if projectile and body is DestructibleProp:

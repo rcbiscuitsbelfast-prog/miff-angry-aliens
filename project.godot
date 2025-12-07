@@ -9,7 +9,17 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RigidBody2D",
+"base": "Node2D",
+"class": "BonusVentLevel",
+"language": "GDScript",
+"path": "res://Scenes/BonusLevels/VentEscape.gd"
+}, {
+"base": "Control",
+"class": "CosmeticMenu",
+"language": "GDScript",
+"path": "res://Scenes/CosmeticMenu/CosmeticMenuScene.gd"
+}, {
+"base": "Obstacle",
 "class": "DestructibleProp",
 "language": "GDScript",
 "path": "res://Objects/Props/DestructibleProp.gd"
@@ -19,10 +29,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Objects/Enemy/Enemy.gd"
 }, {
-"base": "RigidBody2D",
+"base": "Area2D",
+"class": "ExitDoor",
+"language": "GDScript",
+"path": "res://Objects/Doors/ExitDoor.gd"
+}, {
+"base": "Control",
+"class": "FaceCaptureManager",
+"language": "GDScript",
+"path": "res://Objects/FaceCapture/FaceCaptureManager.gd"
+}, {
+"base": "Projectile",
 "class": "FaceProjectile",
 "language": "GDScript",
 "path": "res://Objects/FaceProjectile/FaceProjectile.gd"
+}, {
+"base": "Enemy",
+"class": "FighterEnemy",
+"language": "GDScript",
+"path": "res://Objects/Enemy/FighterEnemy.gd"
 }, {
 "base": "Node",
 "class": "Node2DPool",
@@ -44,118 +69,53 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Objects/Projectile/Projectile.gd"
 }, {
+"base": "Node2D",
+"class": "Room",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/RoomBase.gd"
+}, {
 "base": "RigidBody2D",
 "class": "RubbleChunk",
 "language": "GDScript",
 "path": "res://Objects/Rubble/RubbleChunk.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "CharacterBody2D",
 "class": "StickClone",
 "language": "GDScript",
 "path": "res://Objects/StickClone/StickClone.gd"
 }, {
-"base": "Obstacle",
-"class": "StoneObstacle",
+"base": "Node",
+"class": "StickCloneAnimator",
 "language": "GDScript",
-"path": "res://Objects/Obstacles/StoneObstacle/StoneObstacle1.gd"
+"path": "res://Objects/StickClone/StickCloneAnimator.gd"
 }, {
 "base": "DestructibleProp",
 "class": "StickPersonEnemy",
 "language": "GDScript",
 "path": "res://Objects/Enemies/StickPersonEnemy.gd"
+}, {
+"base": "Obstacle",
+"class": "StoneObstacle",
+"language": "GDScript",
+"path": "res://Objects/Obstacles/StoneObstacle/StoneObstacle1.gd"
 } ]
 _global_script_class_icons={
+"BonusVentLevel": "",
+"CosmeticMenu": "",
 "DestructibleProp": "",
 "Enemy": "",
+"ExitDoor": "",
+"FaceCaptureManager": "",
 "FaceProjectile": "",
+"FighterEnemy": "",
 "Node2DPool": "",
 "Obstacle": "",
 "PoolableNode2D": "",
 "Projectile": "",
+"Room": "",
 "RubbleChunk": "",
 "StickClone": "",
-"StoneObstacle": "",
-"StickPersonEnemy": ""
+"StickCloneAnimator": "",
+"StickPersonEnemy": "",
+"StoneObstacle": ""
 }
-
-[application]
-
-config/name="Toppler"
-run/main_scene="res://Scenes/TopplerMenu/EnhancedTopplerMenu.tscn"
-config/icon="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Aliens/alienGreen_square.png"
-
-[autoload]
-
-Globals="*res://Globals/Globals.gd"
-PlayerProfile="*res://Globals/PlayerProfile.gd"
-GameManager="*res://Globals/GameManager.gd"
-RageSystem="*res://Globals/RageSystem.gd"
-
-[display]
-
-window/size/width=950
-window/size/height=540
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
-
-[importer_defaults]
-
-ogg_vorbis={
-"loop": false,
-"loop_offset": 0
-}
-
-[input]
-
-ui_left={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_right={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_down={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-debug_panel={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"unicode":0,"echo":false,"script":null)
- ]
-}
-interact={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
- ]
-}
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
-
-[physics]
-
-2d/default_gravity=200
-2d/default_linear_damp=0.0
-
-[rendering]
-
-quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=0
-2d/snapping/use_gpu_pixel_snap=true
-vram_compression/import_etc=true
-quality/2d/use_pixel_snap=true

@@ -26,7 +26,7 @@ func load_first_projectile():
 		return
 	
 	# Create face projectile for launch
-	var face_projectile = preload("res://Objects/FaceProjectile/FaceProjectile.tscn").instance()
+	var face_projectile = preload("res://Objects/FaceProjectile/FaceProjectile.tscn").instantiate()
 	face_projectile.global_position = slingshot.rest_position.global_position
 	
 	# Apply player face texture if available

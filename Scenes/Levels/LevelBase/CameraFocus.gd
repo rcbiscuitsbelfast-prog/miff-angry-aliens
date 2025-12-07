@@ -1,13 +1,13 @@
 extends Node2D
 
 
-onready var slingshot = get_node("../Slingshot")
-onready var camera := $Camera2D
-onready var debug_camera := $DebugCamera
-onready var tween := $Tween
+@onready var slingshot = get_node("../Slingshot")
+@onready var camera := $Camera2D
+@onready var debug_camera := $DebugCamera
+@onready var tween := $Tween
 
 export(float, 0.1, 3) var zoom = 1 setget set_zoom
-export var debug = true
+@export var debug = true
 
 var dbg_speed = 700
 var clamping = true
@@ -168,7 +168,7 @@ func set_debug(is_active):
 func _on_Slingshot_projectile_launched(projectile: Projectile):
 	zoom_in_anim(projectile.global_position)
 	follow(projectile)
-	projectile.connect("almost_stopped", self, "_on_projectile_almost_stopped")
+	projectile.almost_stopped.connect(self._on_projectile_almost_stopped)
 
 
 func _on_projectile_almost_stopped():

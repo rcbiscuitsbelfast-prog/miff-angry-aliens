@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fighter_dash_0033.png-17d08bde8f528a3de2b0a6c75db97c45.stex"
+path="res://.import/fighter_dash_0033.png-2ddf11322fb7e3628309c78a031c7491.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://New/fighter_dash_0033.png"
-dest_files=[ "res://.import/fighter_dash_0033.png-17d08bde8f528a3de2b0a6c75db97c45.stex" ]
+dest_files=[ "res://.import/fighter_dash_0033.png-2ddf11322fb7e3628309c78a031c7491.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

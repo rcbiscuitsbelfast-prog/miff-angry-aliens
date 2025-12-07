@@ -7,26 +7,26 @@ enum CaptureMode { NONE, UPLOAD, CAMERA }
 enum Step { MODE_SELECT, CAPTURE, CONFIRM_EYES, CONFIRM_MOUTH, COMPLETE }
 
 # UI Components
-onready var mode_container = $ModeContainer
-onready var capture_container = $CaptureContainer
-onready var confirm_container = $ConfirmContainer
-onready var face_preview = $ConfirmContainer/FacePreview
-onready var eye_point1 = $ConfirmContainer/EyePoint1
-onready var eye_point2 = $ConfirmContainer/EyePoint2
-onready var mouth_point = $ConfirmContainer/MouthPoint
-onready var upload_button = $ModeContainer/UploadButton
-onready var camera_button = $ModeContainer/CameraButton
-onready var capture_button = $CaptureContainer/CaptureButton
-onready var back_button = $ConfirmContainer/BackButton
-onready var confirm_eyes_button = $ConfirmContainer/ConfirmEyesButton
-onready var confirm_mouth_button = $ConfirmContainer/ConfirmMouthButton
-onready var finish_button = $ConfirmContainer/FinishButton
-onready var camera_viewport = $CaptureContainer/CameraViewport
+@onready var mode_container = $ModeContainer
+@onready var capture_container = $CaptureContainer
+@onready var confirm_container = $ConfirmContainer
+@onready var face_preview = $ConfirmContainer/FacePreview
+@onready var eye_point1 = $ConfirmContainer/EyePoint1
+@onready var eye_point2 = $ConfirmContainer/EyePoint2
+@onready var mouth_point = $ConfirmContainer/MouthPoint
+@onready var upload_button = $ModeContainer/UploadButton
+@onready var camera_button = $ModeContainer/CameraButton
+@onready var capture_button = $CaptureContainer/CaptureButton
+@onready var back_button = $ConfirmContainer/BackButton
+@onready var confirm_eyes_button = $ConfirmContainer/ConfirmEyesButton
+@onready var confirm_mouth_button = $ConfirmContainer/ConfirmMouthButton
+@onready var finish_button = $ConfirmContainer/FinishButton
+@onready var camera_viewport = $CaptureContainer/CameraViewport
 
 # Capture state
 var current_mode = CaptureMode.NONE
 var current_step = Step.MODE_SELECT
-var captured_texture: Texture
+var captured_texture: Texture2D
 var face_points: Dictionary = {}
 
 signal face_captured(face_data)
@@ -39,13 +39,13 @@ func _ready():
 
 func setup_ui():
 	# Connect button signals
-	upload_button.connect("pressed", self, "_on_upload_pressed")
-	camera_button.connect("pressed", self, "_on_camera_pressed")
-	capture_button.connect("pressed", self, "_on_capture_pressed")
-	back_button.connect("pressed", self, "_on_back_pressed")
-	confirm_eyes_button.connect("pressed", self, "_on_confirm_eyes_pressed")
-	confirm_mouth_button.connect("pressed", self, "_on_confirm_mouth_pressed")
-	finish_button.connect("pressed", self, "_on_finish_pressed")
+	upload_button.pressed.connect(self._on_upload_pressed)
+	camera_button.pressed.connect(self._on_camera_pressed)
+	capture_button.pressed.connect(self._on_capture_pressed)
+	back_button.pressed.connect(self._on_back_pressed)
+	confirm_eyes_button.pressed.connect(self._on_confirm_eyes_pressed)
+	confirm_mouth_button.pressed.connect(self._on_confirm_mouth_pressed)
+	finish_button.pressed.connect(self._on_finish_pressed)
 
 func setup_point_dragging():
 	# Setup draggable points for face feature identification
@@ -55,7 +55,7 @@ func setup_point_dragging():
 
 func setup_point_drag(point_node: Control, point_name: String):
 	# Make point draggable
-	point_node.connect("gui_input", self, "_on_point_drag", [point_node, point_name])
+	point_node.gui_input.connect(self._on_point_drag.bind(point_node, point_name))
 
 func _on_point_drag(event: InputEvent, point_node: Control, point_name: String):
 	if event is InputEventMouseButton and event.pressed:
@@ -120,7 +120,7 @@ func show_upload_dialog():
 	file_dialog.add_filter("*.jpg ; JPEG Images")
 	file_dialog.rect_size = Vector2(800, 600)
 	
-	file_dialog.connect("file_selected", self, "_on_file_selected", [file_dialog])
+	file_dialog.file_selected.connect(self._on_file_selected.bind(file_dialog))
 	file_dialog.popup_centered()
 
 func _on_file_selected(path: String, dialog: FileDialog):
@@ -148,7 +148,7 @@ func capture_from_camera():
 		var texture = camera_viewport.get_texture()
 		set_captured_texture(texture)
 
-func set_captured_texture(texture: Texture):
+func set_captured_texture(texture: Texture2D):
 	captured_texture = texture
 	current_step = Step.CONFIRM_EYES
 	hide_all_containers()
@@ -202,7 +202,7 @@ func finalize_face_capture():
 		player_profile.set_face_texture(captured_texture)
 		player_profile.set_face_points(face_points)
 	
-	emit_signal("face_captured", face_data)
+	face_captured.emit(face_data)
 	
 	# Return to main menu
 	get_tree().change_scene("res://Scenes/TopplerMenu/EnhancedTopplerMenu.tscn")
