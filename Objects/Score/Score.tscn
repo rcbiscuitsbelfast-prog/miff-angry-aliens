@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://Score"]
 
-[ext_resource path="res://Objects/Score/Score.gd" type="Script" id=1]
-[ext_resource path="res://Objects/Pool/Node2DPool.gd" type="Script" id=2]
-[ext_resource path="res://Objects/Score/PoolableScoreSpr/PoolableScoreSpr.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://Objects/Score/Score.gd" id="1_1"]
+[ext_resource type="Script" path="res://Objects/Pool/Node2DPool.gd" id="2_2"]
+[ext_resource type="PackedScene" path="res://Objects/Score/PoolableScoreSpr/PoolableScoreSpr.tscn" id="3_3"]
 
 [node name="Score" type="Node2D"]
 scale = Vector2( 0.6, 0.6 )
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 __meta__ = {
 "_editor_description_": "Don't edit children. They will be generated automatically."
 }
@@ -23,5 +23,5 @@ Don't delete this node."
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ScorePool" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource("2_2")
 object_scene = ExtResource( 3 )

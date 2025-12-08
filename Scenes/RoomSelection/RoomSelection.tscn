@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://RoomSelection"]
 
-[ext_resource path="res://Scenes/RoomSelection/RoomSelection.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scenes/RoomSelection/RoomSelection.gd" id="1_1"]
 
 [node name="RoomSelection" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0

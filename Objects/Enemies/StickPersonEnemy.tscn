@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://StickPersonEnemy"]
 
-[ext_resource path="res://Objects/Enemies/StickPersonEnemy.gd" type="Script" id=1]
-[ext_resource path="res://New/fighter_Idle_0001.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Props/DestructibleProp.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://Objects/Enemies/StickPersonEnemy.gd" id="1_1"]
+[ext_resource type="Texture" path="res://New/fighter_Idle_0001.png" id="2_2"]
+[ext_resource type="PackedScene" path="res://Objects/Props/DestructibleProp.tscn" id="3_3"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 50 )
@@ -16,7 +16,7 @@ groups = [
 "stick_person_enemies"
 ]
 mass = 0.5
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 has_moustache = true
 has_wig = false
 has_glasses = true
@@ -26,9 +26,9 @@ max_hitpoints = 2
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource( 2 )
+shape = SubResource("2_2")

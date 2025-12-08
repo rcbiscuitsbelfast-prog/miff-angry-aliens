@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://PoolableScoreSpr"]
 
-[ext_resource path="res://Objects/Pool/PoolableNode2D.gd" type="Script" id=1]
-[ext_resource path="res://Assets/graphics/kenney2/numbers/hud1.png" type="Texture" id=2]
+[ext_resource type="Script" path="res://Objects/Pool/PoolableNode2D.gd" id="1_1"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney2/numbers/hud1.png" id="2_2"]
 
 [node name="PoolableScore" type="Sprite"]
 texture = ExtResource( 2 )
-script = ExtResource( 1 )
+script = ExtResource("1_1")

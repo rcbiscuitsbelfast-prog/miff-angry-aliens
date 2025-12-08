@@ -3,7 +3,7 @@ class_name Node2DPool
 
 # Needs to have a `can_be_pooled` property, otherwise the pool
 # won't work
-export(PackedScene) var object_scene
+@export(PackedScene) var object_scene
 
 var pool_size := 5
 var pool_refresh_timer := 1

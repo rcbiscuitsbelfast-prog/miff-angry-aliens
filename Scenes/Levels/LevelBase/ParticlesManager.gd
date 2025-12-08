@@ -1,8 +1,8 @@
 extends Node
 
-export(PackedScene) var dust_scene
-export(PackedScene) var explosion_scene
-export(PackedScene) var debris_scene
+@export(PackedScene) var dust_scene
+@export(PackedScene) var explosion_scene
+@export(PackedScene) var debris_scene
 
 @onready var _debris := $Debris
 @onready var _dust := $Dust
@@ -20,7 +20,7 @@ func _ready():
 	# connect scene obstacles to the particles and sfx
 	for obstacle in get_tree().get_nodes_in_group("obstacle"):
 		if not obstacle is Obstacle:
-			print_debug(obstacle, " is not of type Obstacle") 
+			print_info(obstacle, " is not of type Obstacle") 
 		obstacle.hit.connect(audio._on_Obstacle_hit)
 		if obstacle is StoneObstacle:
 			obstacle.hit.connect(self._on_Obstacle_hit)

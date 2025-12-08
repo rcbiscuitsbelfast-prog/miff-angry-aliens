@@ -1,41 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://Clouds"]
 
-[ext_resource path="res://Scenes/MainMenu/Clouds.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/MainMenu/Clouds/Cloud.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" path="res://Scenes/MainMenu/Clouds.gd" id="2_2"]
+[ext_resource type="PackedScene" path="res://Scenes/MainMenu/Clouds/Cloud.tscn" id="4_4"]
 
 [node name="Clouds" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2_2")
 
 [node name="Far" type="Node2D" parent="."]
 modulate = Color( 0.819608, 0.956863, 0.996078, 1 )
 
-[node name="Cloud" parent="Far" instance=ExtResource( 4 )]
+[node name="Cloud" parent="Far" instance=ExtResource("4_4")]
 position = Vector2( -130, 84 )
 scale = Vector2( 0.970363, 0.91247 )
 
-[node name="Cloud2" parent="Far" instance=ExtResource( 4 )]
+[node name="Cloud2" parent="Far" instance=ExtResource("4_4")]
 position = Vector2( 854, 192 )
 scale = Vector2( 1.4085, 0.85852 )
 
-[node name="Cloud3" parent="Far" instance=ExtResource( 4 )]
+[node name="Cloud3" parent="Far" instance=ExtResource("4_4")]
 position = Vector2( 261, 77 )
 scale = Vector2( 0.939445, 0.793193 )
 
 [node name="Near" type="Node2D" parent="."]
 
-[node name="Cloud" parent="Near" instance=ExtResource( 4 )]
+[node name="Cloud" parent="Near" instance=ExtResource("4_4")]
 position = Vector2( 423, 112 )
 scale = Vector2( 1.42798, 1.11293 )
 
-[node name="Cloud2" parent="Near" instance=ExtResource( 4 )]
+[node name="Cloud2" parent="Near" instance=ExtResource("4_4")]
 position = Vector2( 633, 241 )
 scale = Vector2( 0.939445, 0.793193 )
 
-[node name="Cloud3" parent="Near" instance=ExtResource( 4 )]
+[node name="Cloud3" parent="Near" instance=ExtResource("4_4")]
 position = Vector2( 852, 90 )
 scale = Vector2( 1.1696, 0.797272 )
 
-[node name="Cloud4" parent="Near" instance=ExtResource( 4 )]
+[node name="Cloud4" parent="Near" instance=ExtResource("4_4")]
 position = Vector2( 86, 218 )
 scale = Vector2( 1.47831, 1.01566 )
 

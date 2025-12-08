@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://DestructibleProp"]
 
-[ext_resource path="res://Objects/Props/DestructibleProp.gd" type="Script" id=1]
-[ext_resource path="res://New/fighter_Idle_0001.png" type="Texture" id=2]
-[ext_resource path="res://Assets/sounds/obstacle-rock-hit.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Assets/sounds/obstacle-rock-destroyed.ogg" type="AudioStream" id=4]
+[ext_resource type="Script" path="res://Objects/Props/DestructibleProp.gd" id="1_1"]
+[ext_resource type="Texture" path="res://New/fighter_Idle_0001.png" id="2_2"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/obstacle-rock-hit.ogg" id="3_3"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/obstacle-rock-destroyed.ogg" id="4_4"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 60 )
@@ -12,7 +12,7 @@ extents = Vector2( 40, 60 )
 groups = [
 "destructible_props"
 ]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 prop_type = 0
 max_hitpoints = 3
 damage_sprites = [ ExtResource( 2 ) ]
@@ -23,6 +23,6 @@ destroy_sound = ExtResource( 4 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://RoomBase"]
 
-[ext_resource path="res://Scenes/Rooms/RoomBase.gd" type="Script" id=1]
-[ext_resource path="res://Globals/RageSystem.gd" type="Script" id=2]
-[ext_resource path="res://Objects/Slingshot/Slingshot.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Objects/Camera/EnhancedCameraFocus.gd" type="Script" id=4]
+[ext_resource type="Script" path="res://Scenes/Rooms/RoomBase.gd" id="1_1"]
+[ext_resource type="Script" path="res://Globals/RageSystem.gd" id="2_2"]
+[ext_resource type="PackedScene" path="res://Objects/Slingshot/Slingshot.tscn" id="3_3"]
+[ext_resource type="Script" path="res://Objects/Camera/EnhancedCameraFocus.gd" id="4_4"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 80 )
 
 [node name="RoomBase" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 room_name = "Test Room"
 target_destruction_score = 1000
 
@@ -18,7 +18,7 @@ target_destruction_score = 1000
 [node name="FaceLauncher" type="Node2D" parent="."]
 position = Vector2( 200, 400 )
 
-[node name="Slingshot" parent="FaceLauncher" instance=ExtResource( 3 )]
+[node name="Slingshot" parent="FaceLauncher" instance=ExtResource("3_3")]
 position = Vector2( 0, 0 )
 
 [node name="PlayerSpawn" type="Position2D" parent="."]
@@ -31,10 +31,10 @@ position = Vector2( 200, 400 )
 position = Vector2( 700, 300 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="CameraFocus" type="Node2D" parent="."]
-script = ExtResource( 4 )
+script = ExtResource("4_4")
 
 [node name="RageSystem" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource("2_2")

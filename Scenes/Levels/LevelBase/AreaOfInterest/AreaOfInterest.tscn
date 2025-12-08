@@ -1,4 +1,4 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://AreaOfInterest"]
 
 [node name="AreaOfInterest" type="Area2D" groups=[
 "area_of_interest",

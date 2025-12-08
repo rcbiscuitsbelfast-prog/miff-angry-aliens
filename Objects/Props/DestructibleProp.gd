@@ -18,7 +18,7 @@ var current_hitpoints: int
 @export var hit_sound: AudioStream
 @export var destroy_sound: AudioStream
 
-@onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 @onready var audio_player = $AudioStreamPlayer
 
 signal prop_destroyed(prop, impact_force)

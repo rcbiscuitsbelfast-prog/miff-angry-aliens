@@ -11,7 +11,7 @@ func _enter_tree():
 
 
 func load_scene(new_scene: String, params = {}):
-	print_debug(params)
+	print_info(params)
 	overlay_anim.play("fadein")
 	await overlay_anim.animation_finished
 	# swap scenes

@@ -1,16 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://Slingshot"]
 
-[ext_resource path="res://Assets/graphics/elastic-cover.png" type="Texture" id=1]
-[ext_resource path="res://Assets/graphics/slingshot-elastic.png" type="Texture" id=2]
-[ext_resource path="res://Objects/Slingshot/InputArea.gd" type="Script" id=3]
-[ext_resource path="res://Assets/sounds/slinshot-release.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Objects/Slingshot/Slingshot.gd" type="Script" id=5]
-[ext_resource path="res://Objects/Slingshot/TrajectoryDrawer/TrajectoryDrawer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/graphics/slingshot.png" type="Texture" id=7]
-[ext_resource path="res://Assets/graphics/elastic-pad.png" type="Texture" id=8]
-[ext_resource path="res://Objects/Slingshot/Audio.gd" type="Script" id=9]
-[ext_resource path="res://Assets/sounds/swhish.ogg" type="AudioStream" id=10]
-[ext_resource path="res://Assets/sounds/slingshot-tension.ogg" type="AudioStream" id=11]
+[ext_resource type="Texture" path="res://Assets/graphics/elastic-cover.png" id="1_1"]
+[ext_resource type="Texture" path="res://Assets/graphics/slingshot-elastic.png" id="2_2"]
+[ext_resource type="Script" path="res://Objects/Slingshot/InputArea.gd" id="3_3"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/slinshot-release.ogg" id="4_4"]
+[ext_resource type="Script" path="res://Objects/Slingshot/Slingshot.gd" id="5_5"]
+[ext_resource type="PackedScene" path="res://Objects/Slingshot/TrajectoryDrawer/TrajectoryDrawer.tscn" id="6_6"]
+[ext_resource type="Texture" path="res://Assets/graphics/slingshot.png" id="7_7"]
+[ext_resource type="Texture" path="res://Assets/graphics/elastic-pad.png" id="8_8"]
+[ext_resource type="Script" path="res://Objects/Slingshot/Audio.gd" id="9_9"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/swhish.ogg" id="10_10"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/slingshot-tension.ogg" id="11_11"]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
@@ -27,7 +27,7 @@ func set_rest_position():
 radius = 143.794
 
 [node name="Slingshot" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource("5_5")
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": "Drag Bone2 to stretch the slingshot"
@@ -60,7 +60,7 @@ rotation = -0.240171
 scale = Vector2( 1.5765, 0.6 )
 texture = ExtResource( 2 )
 offset = Vector2( -16, 0 )
-script = SubResource( 1 )
+script = SubResource("1_1")
 __meta__ = {
 "_edit_lock_": true
 }
@@ -74,7 +74,7 @@ scale = Vector2( 1.41732, 0.6 )
 z_index = 1
 texture = ExtResource( 2 )
 offset = Vector2( -16, 0 )
-script = SubResource( 1 )
+script = SubResource("1_1")
 __meta__ = {
 "_edit_lock_": true
 }
@@ -114,19 +114,19 @@ __meta__ = {
 [node name="InputArea" type="Area2D" parent="."]
 visible = false
 position = Vector2( 67.5076, 42.6981 )
-script = ExtResource( 3 )
+script = ExtResource("3_3")
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InputArea"]
-shape = SubResource( 2 )
+shape = SubResource("2_2")
 
-[node name="TrajectoryDrawer" parent="." instance=ExtResource( 6 )]
+[node name="TrajectoryDrawer" parent="." instance=ExtResource("6_6")]
 
 [node name="Audio" type="Node" parent="."]
-script = ExtResource( 9 )
+script = ExtResource("9_9")
 
 [node name="Aiming" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 11 )

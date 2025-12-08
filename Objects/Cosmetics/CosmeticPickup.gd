@@ -9,7 +9,7 @@ signal cosmetic_collected(cosmetic_type, cosmetic_name)
 @export var cosmetic_name = "default"
 @export var pickup_sound: AudioStream
 
-@onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 @onready var audio_player = $AudioStreamPlayer
 
 func _ready():

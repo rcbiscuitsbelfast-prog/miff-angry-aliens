@@ -167,7 +167,7 @@ func apply_cosmetics_to_character(stick_clone: Node):
 		
 		if texture:
 			# Create overlay sprite for cosmetic
-			var overlay = Sprite.new()
+			var overlay = Sprite2D.new()
 			overlay.texture = texture
 			overlay.name = cosmetic_type + "_overlay"
 			stick_clone.add_child(overlay)

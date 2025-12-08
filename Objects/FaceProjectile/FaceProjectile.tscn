@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://FaceProjectile"]
 
-[ext_resource path="res://Objects/FaceProjectile/FaceProjectile.gd" type="Script" id=1]
-[ext_resource path="res://New/fighter_Idle_0001.png" type="Texture" id=2]
-[ext_resource path="res://Objects/FaceProjectile/SquashStretch.gd" type="Script" id=3]
-[ext_resource path="res://Assets/graphics/kenney2/particle.png" type="Texture" id=4]
+[ext_resource type="Script" path="res://Objects/FaceProjectile/FaceProjectile.gd" id="1_1"]
+[ext_resource type="Texture" path="res://New/fighter_Idle_0001.png" id="2_2"]
+[ext_resource type="Script" path="res://Objects/FaceProjectile/SquashStretch.gd" id="3_3"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney2/particle.png" id="4_4"]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
@@ -13,14 +13,14 @@ groups = [
 "projectile"
 ]
 mass = 0.8
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 face_texture = ExtResource( 2 )
 
 [node name="FaceSprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="Trail" type="CPUParticles2D" parent="."]
 texture = ExtResource( 4 )
@@ -36,4 +36,4 @@ scale_amount = 2.0
 scale_amount_random = 0.5
 
 [node name="SquashStretch" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3_3")

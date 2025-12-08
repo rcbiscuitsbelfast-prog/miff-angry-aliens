@@ -6,7 +6,7 @@ extends Node2D
 @onready var debug_camera := $DebugCamera
 @onready var tween := $Tween
 
-export(float, 0.1, 3) var zoom = 1 setget set_zoom
+@export(float, 0.1, 3) var zoom = 1 setget set_zoom
 @export var debug = true
 
 var dbg_speed = 700
