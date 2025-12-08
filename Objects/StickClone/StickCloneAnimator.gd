@@ -9,8 +9,8 @@ class_name StickCloneAnimator
 enum AnimState { IDLE, WALK, JUMP, JUMP_UP, JUMP_DOWN, CLIMB }
 
 # References
-onready var animated_sprite = get_parent().get_node_or_null("AnimatedSprite")
-onready var sprite = get_parent().get_node_or_null("Sprite")
+@onready var animated_sprite = get_parent().get_node_or_null("AnimatedSprite")
+@onready var sprite = get_parent().get_node_or_null("Sprite")
 
 # Animation configuration
 var current_animation = AnimState.IDLE

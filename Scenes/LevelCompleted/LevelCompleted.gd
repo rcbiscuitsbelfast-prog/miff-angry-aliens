@@ -1,8 +1,8 @@
 extends Control
 
-onready var score := $NinePatchRect/ScoreWrapper/Score
-onready var retry_button := $NinePatchRect/VBoxContainer/Retry
-onready var level_selection_button := $NinePatchRect/VBoxContainer/LevelSelection
+@onready var score := $NinePatchRect/ScoreWrapper/Score
+@onready var retry_button := $NinePatchRect/VBoxContainer/Retry
+@onready var level_selection_button := $NinePatchRect/VBoxContainer/LevelSelection
 
 
 func _ready():
@@ -12,7 +12,7 @@ func _ready():
 func appear(final_score: int):
 	score.score_value = final_score
 	$AnimationPlayer.play("show")
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	# activate buttons
 	retry_button.disabled = false
 	level_selection_button.disabled = false

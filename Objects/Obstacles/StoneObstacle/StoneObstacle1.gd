@@ -5,7 +5,7 @@ var StoneObstacleClassRef =  load("res://Objects/Obstacles/StoneObstacle/StoneOb
 
 
 # dependencies
-onready var collision_shape := $CollisionShape2D
+@onready var collision_shape := $CollisionShape2D
 # vars
 var start_damaged = true
 # constants
@@ -55,16 +55,16 @@ func _integrate_forces(state: Physics2DDirectBodyState):
 		
 		var break_point = get_breakpoint_for(collider)
 		if impact_amount >= SMALL_HIT_THRESHOLD and impact_amount < break_point:
-			emit_signal("hit", self, collision_pos, false)
+			hit.emit(self, collision_pos, false)
 		elif impact_amount >= break_point:
 			if is_damaged():
-				emit_signal("hit", self, collision_pos, true)
+				hit.emit(self, collision_pos, true)
 				if collider is StoneObstacleClassRef:
 					collider.queue_free()
 				queue_free()
 			else:
 				set_damaged(true)
-				emit_signal("hit", self, global_position, false)
+				hit.emit(self, global_position, false)
 
 
 func get_breakpoint_for(collider):

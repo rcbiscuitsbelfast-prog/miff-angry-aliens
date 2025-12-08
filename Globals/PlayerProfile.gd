@@ -4,7 +4,9 @@ signal face_changed(new_face_texture)
 signal cosmetics_updated()
 
 # Face data
-var face_texture: Texture setget set_face_texture
+var face_texture: Texture2D:
+    set(value):
+        set_face_texture(value)
 var face_captured = false
 var face_points: Dictionary = {}
 
@@ -26,8 +28,8 @@ var current_moustache = "none"
 var current_wig = "none"
 
 # Monetization
-var ads_removed = false setget , setget 
-var premium_unlocked = false setget , setget 
+var ads_removed = false
+var premium_unlocked = false
 
 # Player progress
 var total_destruction_score = 0
@@ -35,19 +37,19 @@ var rooms_completed = 0
 var highest_combo = 0
 
 # Settings
-var screen_shake = true setget , setget 
-var smooth_follow = true setget , setget 
-var music_enabled = true setget , setget 
-var sfx_enabled = true setget , setget 
+var screen_shake = true
+var smooth_follow = true
+var music_enabled = true
+var sfx_enabled = true 
 
 func _ready():
     # Load saved profile data
     load_profile()
 
-func set_face_texture(texture: Texture):
+func set_face_texture(texture: Texture2D):
     face_texture = texture
     face_captured = true
-    emit_signal("face_changed", face_texture)
+    face_changed.emit(face_texture)
     save_profile()
 
 func set_face_points(points: Dictionary):
@@ -63,7 +65,7 @@ func capture_face_from_camera():
     var placeholder_face = load("res://New/fighter_Idle_0001.png")
     set_face_texture(placeholder_face)
 
-func get_face_with_emotion() -> Texture:
+func get_face_with_emotion() -> Texture2D:
     # Return face texture with current emotion applied
     if not face_texture:
         return null
@@ -75,36 +77,36 @@ func get_face_with_emotion() -> Texture:
 func equip_hat(hat_name: String):
     if hat_name in unlocked_hats:
         current_hat = hat_name
-        emit_signal("cosmetics_updated")
+        cosmetics_updated.emit()
         save_profile()
 
 func equip_glasses(glasses_name: String):
     if glasses_name in unlocked_glasses:
         current_glasses = glasses_name
-        emit_signal("cosmetics_updated")
+        cosmetics_updated.emit()
         save_profile()
 
 func equip_filter(filter_name: String):
     if filter_name in unlocked_filters:
         current_filter = filter_name
-        emit_signal("cosmetics_updated")
+        cosmetics_updated.emit()
         save_profile()
 
 func equip_moustache(moustache_name: String):
     if moustache_name in unlocked_moustaches:
         current_moustache = moustache_name
-        emit_signal("cosmetics_updated")
+        cosmetics_updated.emit()
         save_profile()
 
 func equip_wig(wig_name: String):
     if wig_name in unlocked_wigs:
         current_wig = wig_name
-        emit_signal("cosmetics_updated")
+        cosmetics_updated.emit()
         save_profile()
 
 func set_emotion(emotion_name: String):
     current_emotion = emotion_name
-    emit_signal("face_changed", face_texture)
+    face_changed.emit(face_texture)
 
 func unlock_cosmetic(cosmetic_type: String, cosmetic_name: String):
     match cosmetic_type:
@@ -118,10 +120,10 @@ func unlock_cosmetic(cosmetic_type: String, cosmetic_name: String):
             if cosmetic_name not in unlocked_filters:
                 unlocked_filters.append(cosmetic_name)
     
-    emit_signal("cosmetics_updated")
+    cosmetics_updated.emit()
     save_profile()
 
-func apply_cosmetics_to_sprite(sprite: Sprite):
+func apply_cosmetics_to_sprite(sprite: Sprite2D):
     # Apply current cosmetics to a sprite
     # This would be called by StickClone or FaceProjectile
     pass

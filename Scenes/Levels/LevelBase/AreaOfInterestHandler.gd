@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var camera_manager = get_node("../CameraFocus")
+@onready var camera_manager = get_node("../CameraFocus")
 
 var area: Area2D
 var cshape: CollisionShape2D
@@ -15,9 +15,9 @@ func _ready():
 	area = areas[0]
 	cshape = area.get_node("CollisionShape2D")
 	assert(area.get_child_count() == 1, "Error: AreaOfInterest node should have only one child CollisionShape2D")
-	area.connect("body_exited", self, "_on_AreaOfInterest_body_exited")
+	area.body_exited.connect(self._on_AreaOfInterest_body_exited)
 	# wait for every child of the tree to be ready
-	yield(get_tree(), "idle_frame")
+	await get_tree().process_frame
 	camera_manager.set_camera_limits(area)
 
 
@@ -38,7 +38,7 @@ func _on_AreaOfInterest_body_exited(body):
 
 func remove_projectile(obj: Projectile):
 	obj.state = Projectile.STATES.STOPPED
-	obj.emit_signal("almost_stopped")
+	obj.almost_stopped.emit()
 	obj.queue_free()
 
 

@@ -1,9 +1,9 @@
 extends Node
 
-onready var hit = $Hit
-onready var obstacle_rock_hit = $ObstacleRockHit
-onready var obstacle_rock_destroyed = $ObstacleRockDestroyed
-onready var alien = $Alien
+@onready var hit = $Hit
+@onready var obstacle_rock_hit = $ObstacleRockHit
+@onready var obstacle_rock_destroyed = $ObstacleRockDestroyed
+@onready var alien = $Alien
 
 var alien_sounds = [
 	"res://Assets/sounds/alien-1.ogg",
@@ -26,7 +26,7 @@ func _on_Obstacle_hit(obstacle, position, destroyed):
 		if destroyed:
 			obstacle_rock_destroyed.play()
 		else:
-			obstacle_rock_hit.pitch_scale = rand_range(0.85, 1.15)
+			obstacle_rock_hit.pitch_scale = randf_range(0.85, 1.15)
 			obstacle_rock_hit.play()
 	else:
 		hit.play()

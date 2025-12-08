@@ -2,8 +2,8 @@ class_name FighterEnemy
 extends Enemy
 
 # Fighter-specific properties
-export var health = 100
-export var damage_threshold = 800
+@export var health = 100
+@export var damage_threshold = 800
 
 # Animation states
 enum AnimationState {
@@ -14,8 +14,8 @@ enum AnimationState {
 }
 
 var current_animation = AnimationState.IDLE
-onready var sprite = $Sprite
-onready var animation_player = $AnimationPlayer
+@onready var sprite = $Sprite
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
     super._ready()
@@ -78,7 +78,7 @@ func play_animation(state: AnimationState):
         AnimationState.HIT:
             if animation_player.has_animation("hit"):
                 animation_player.play("hit")
-                yield(animation_player, "animation_finished")
+                await animation_player.animation_finished
                 play_animation(AnimationState.IDLE)
         AnimationState.DEATH:
             if animation_player.has_animation("death"):
@@ -103,7 +103,7 @@ func take_damage(damage_amount: int):
     
     if health <= 0:
         play_animation(AnimationState.DEATH)
-        emit_signal("destroyed", self, null, Vector2())
+        destroyed.emit(self, null, Vector2())
 
 func _on_Destruction_animation_finished():
     # Called when death animation completes

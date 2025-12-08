@@ -28,7 +28,7 @@ func _ready():
 	timer.wait_time = pool_refresh_timer
 	add_child(timer)
 	timer.start()
-	timer.connect("timeout", self, "check_unused_objs")
+	timer.timeout.connect(self.check_unused_objs)
 
 
 func _exit_tree():
@@ -68,7 +68,7 @@ func check_unused_objs():
 
 
 func _create_obj() -> PoolableNode2D:
-	var obj = object_scene.instance() as PoolableNode2D
+	var obj = object_scene.instantiate() as PoolableNode2D
 	obj.modulate.a = 0
 	if !obj is PoolableNode2D:
 		print("WARNING:, ", obj, " does not extend PoolableNode2D")

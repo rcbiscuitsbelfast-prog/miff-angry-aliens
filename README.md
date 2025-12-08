@@ -1,168 +1,198 @@
 
-# Angry Aliens
+# Angry Aliens (Miff Angry Aliens - Toppler Edition)
 
 ![optimized](https://user-images.githubusercontent.com/6860637/79353473-60ad7580-7f3b-11ea-8bc7-411bab23032e.gif)
 
-**Angry Aliens** is an open source game made with Godot Engine 3.2.1.
+> **Note**: This project has been migrated to **Godot 4.x** with enhanced mobile support and new features.
+
+**Angry Aliens** is an open source game originally made with Godot Engine 3.2.1, now updated to Godot 4.x.
+
+This fork includes the "Toppler" game mode - a unique blend of destruction and platforming gameplay.
 
 Source code is MIT licensed. Feel free to read it, modify it and reuse it in your projects.
 
-Gameplay is definitely inspired by *Angry Birds*.
+Gameplay is inspired by *Angry Birds* with platforming elements.
 
-### Disclaimer
+## 🎮 What's New in Toppler Edition
 
-> This project is used as a base for video tutorials in Italian. All the source code and documentation is in English.
-> If you are interested, videos are released [on my Crystal Bit YouTube channel](https://www.youtube.com/playlist?list=PLaCq3HqKQR6rNyqulBsbca-6wzxp8H52r).
+### Face Projectile System
+- Launch your custom face as a projectile
+- Realistic squash/stretch physics on impact
+- Face capture and customization
 
-## Table of Contents
+### Traversal Platformer
+- Play as a stick figure clone
+- Platform across destroyed rubble
+- Climb and traverse destruction
 
-- [Angry Aliens](#angry-aliens)
-    - [Disclaimer](#disclaimer)
-  - [Table of Contents](#table-of-contents)
-  - [Branches: `master`, `develop` and `video`](#branches-master-develop-and-video)
-  - [Prerequisites](#prerequisites)
-  - [Tutorial Contents](#tutorial-contents)
-    - [1. Introduction](#1-introduction)
-    - [2. Configure Godot and Android SDK](#2-configure-godot-and-android-sdk)
-    - [3. Testing performances on the smartphone](#3-testing-performances-on-the-smartphone)
-    - [4. Slingshot](#4-slingshot)
-    - [5. Level (for multiple resolutions)](#5-level-for-multiple-resolutions)
-    - [6. Enemies](#6-enemies)
-    - [7. Obstacles](#7-obstacles)
-    - [[EXTRA] Possible improvements / future topics](#extra-possible-improvements--future-topics)
-  - [Credits](#credits)
-  - [Thanks](#thanks)
-  - [Support me](#support-me)
+### Room-Based Progression
+- Multiple themed rooms (Cafeteria, Office, etc.)
+- Destructible props with multi-stage damage
+- Exit doors that unlock after destruction
 
-## Branches: `master`, `develop` and `video`
-- `develop` branch contains the complete project.Some advanced features may not be included in the master branch.
-- `master` branch will be in sync with video tutorials releases on my YouTube channel.
-- `videoX/start` branches contains the code to follow the tutorial number `X`. Example:
-  - `video5/start` contains the code to follow the [video tutorial 5](https://youtu.be/SVuOYKzTwxw) on YouTube.
+### Customization
+- Face capture with point detection
+- Cosmetic system (hats, glasses, wigs, moustaches)
+- Emotion system for expressions
 
-## Prerequisites
+## 🚀 Getting Started
 
-The tutorials require basic Godot understanding about Scenes, GDScript, 2D Nodes such as Sprite2D, CollisionShape2D, Area2D.
+### Prerequisites
 
-You can learn these topics by:
+- **Godot 4.x** (download from [godotengine.org](https://godotengine.org/))
+- Basic understanding of Godot Engine
+- For mobile development:
+  - Android SDK (for Android builds)
+  - Connected Android device or emulator
 
-- reading the [official documentation](https://docs.godotengine.org/en/3.1/getting_started/step_by_step/intro_to_the_editor_interface.html)
-- following my [video tutorial series](https://www.youtube.com/watch?v=AY1zuH2mHQ0&list=PLaCq3HqKQR6rlPpf2GAOXp52ddt0V71Yl) on Godot 3 basics (*only in Italian*)
+### Opening the Project
 
-## Tutorial Contents
+1. Clone this repository
+2. Open Godot 4.x
+3. Click "Import"
+4. Navigate to the project folder and select `project.godot`
+5. Let Godot convert any remaining scene files
+6. Click "Import & Edit"
 
-### 1. Introduction
+### First Run
 
-- 🎥 [YouTube - #1 - Introduzione](https://youtu.be/x0emyyXC_sM)
+1. Press F5 or click the Play button
+2. The main menu should load
+3. Test the customization features
+4. Start playing in a room
 
-This tutorial series will focus on creating a simple mobile game
-using Godot 3.2.
+## 📱 Mobile Support
 
-I choose to make an Angry Birds clone because:
+This project is optimized for mobile devices with:
+- Touch input for slingshot mechanics
+- Responsive UI scaling
+- Performance optimizations
+- GL Compatibility renderer for wide device support
 
-1. it is short to recreate (without adding polish) 
-2. it allows to stress Godot performances on the worst case scenario: intense game (physics based) on a low-power device (smartphone)
+### Testing on Mobile
 
-I'm creating these tutorials using Manjaro Linux (Arch Linux derivative), but similar steps can be done on other operating systems as well.
+1. Enable USB debugging on your Android device
+2. Connect device via USB
+3. In Godot, go to Project → Export
+4. Create/configure Android export preset
+5. Click "Export & Run"
 
-Currently I don't have an Apple device and I cannot develop/test iOS/OSX games. I'll try to provide instructions for other OSs, but help here is really appreciated (especially if you are a Debian, Ubuntu, Windows or OSX user).
+For detailed mobile setup, see [EXPORT_PRESETS_NOTE.md](EXPORT_PRESETS_NOTE.md)
 
-### 2. Configure Godot and Android SDK
+## 🔧 Migration from Godot 3.2.x to 4.x
 
-- 🎥 [YouTube - #2 - Configurare Linux](https://youtu.be/xFia7zG8NGA)
-- 🎥 [YouTube - #3 - Configurare Windows](https://youtu.be/PNj8YmXjj-A)
-  
-> How do I configure my computer for Android development?
+This project has been fully migrated from Godot 3.2.x to 4.x. Key changes include:
 
-- `android-tools` and `jdk-openjdk`
-- debug keystore
-- Godot configuration
-- Export templates
-- **APK creation**
-- APK one click installation
+- GDScript syntax updates (@export, @onready, signals)
+- CharacterBody2D migration
+- New Tween API
+- Texture2D updates
+- Mobile optimization
 
-### 3. Testing performances on the smartphone
+For complete migration details, see [MIGRATION_NOTES.md](MIGRATION_NOTES.md)
 
-- 🎥 [YouTube - #4 - Creare il livello](https://youtu.be/VZS0pv14--s)
-- 🎥 [YouTube - #5 - Creare la scena StressTest (pt1)](https://youtu.be/SVuOYKzTwxw)
-- 🎥 [YouTube - #6 - Stress test (pt.2) - Debugger e profiler](https://youtu.be/s4jSWPtqR8M)
-- 🎥 [YouTube - #7 - Stress test (pt.3) - Debugging su Android con Remote Debugger](https://youtu.be/-z6w9ArPFBY)
+## 📖 Documentation
 
-> If we include all the physics elements and we create hundreds of game objects, is the game playable?
+- **[QUICK_START.md](QUICK_START.md)** - Get up and running quickly
+- **[QUICK_ROOM_CREATION.md](QUICK_ROOM_CREATION.md)** - Create custom rooms
+- **[TESTING_GUIDE.md](TESTING_GUIDE.md)** - Comprehensive testing documentation
+- **[TESTING_CHECKLIST.md](TESTING_CHECKLIST.md)** - Migration testing checklist
+- **[PHASE3_FEATURES_GUIDE.md](PHASE3_FEATURES_GUIDE.md)** - Advanced features guide
+- **[SOUND_INTEGRATION_GUIDE.md](SOUND_INTEGRATION_GUIDE.md)** - Audio setup guide
 
-![Stress test scene screen](Assets/readme/stress-test.png)
+## 🎯 Game Architecture
 
-### 4. Slingshot
+### Core Systems
 
-- 🎥 [YouTube - #8 - Lancio Proiettili (Pt.1)](https://youtu.be/W16SLhgp8Zk)
-- 🎥 [YouTube - #9 - TouchScreen Input: Press, Release e Drag - Lancio Proiettili (Pt.2)](https://youtu.be/vVDVJMomxBU)
-- 🎥 [YouTube - #10 - input e unhandled_input](https://youtu.be/ZuBWgmOB_Gs)
+1. **FaceProjectile** - Player-customized projectile with physics
+2. **DestructibleProp** - Multi-stage destructible objects
+3. **RubbleChunk** - Walkable debris from destruction
+4. **StickClone** - Platformer character for traversal
+5. **RoomBase** - Modular room system
+6. **RageSystem** - Combo and scoring system
 
-> How to create a slingshot that reacts on touchscreen and mouse input
+### Project Structure
 
-- Create a projectile
-- Create a simple slingshot
-- Input handling for mouse and touchscreen
-- Projectile launch
-- Load new projectile
+```
+├── Assets/          # Graphics, audio, and other assets
+├── Globals/         # Autoload singletons
+├── Objects/         # Reusable game objects
+├── Scenes/          # Game scenes and levels
+└── Documentation/   # Guides and documentation
+```
 
-### 5. Level (for multiple resolutions)
+## 🧪 Testing
 
-- 🎥 [#11 - Risoluzioni Multiple (pt1)](https://youtu.be/uuRF0yJ6P1M)
-- 🎥 [#12 - Risoluzioni Multiple (pt2)](https://youtu.be/va4RFkUQ6xg)
+Before building for production:
 
-![Image level screen](Assets/readme/level.png)
+1. Run through [TESTING_CHECKLIST.md](TESTING_CHECKLIST.md)
+2. Test on multiple devices
+3. Verify touch input works correctly
+4. Check performance metrics
 
-- Mobile Layout
-- Multiple resolutions handling
+## 🎨 Credits
 
-### 6. Enemies
+### Original Angry Aliens
+- **Kenney** for most game assets - https://www.kenney.nl/
+- **Hanabi** for slingshot sprites
+- **Crystal Bit** for original project and tutorials
 
+### Toppler Edition
+- Enhanced gameplay mechanics
+- Face capture and customization system
+- Room-based progression
+- Platforming integration
 
-- 🎥 [#13 - Quantità di moto e gestione delle collisioni (pt1)](https://youtu.be/rAp0APW_aAQ)
-- 🎥 [#14 - _integrate_forces: gestione collisioni (pt2)](https://youtu.be/cjRhymHrIe4)
+## 📜 License
 
-- Rigid bodies with collision detection
-- Enemies destruction
-- enemy destroyed signal
+MIT License - See LICENSE.md for details
 
-### 7. Obstacles
+## 🙏 Thanks
 
-- 🎥 [#15 - Aggiungere ostacoli e generalizzare le collisioni](https://youtu.be/yfljmFIFHOg)
-
-- Obstacle scene
-- Obstacle destruction
-- `CollisionHandler` node to generalize collision physics
-
-### [EXTRA] Possible improvements / future topics
-
-Extra topics are available in the `develop` branch.
-
-They are not tutorialized, but the code should be simple to understand.
-
-More than that, there are still a lot of areas that can be explored like:
-
-- Camera handling (pan, focus, zoom, ...)
-- Publishing on a game store
-  - Fdroid
-  - Play Store
-- Managing audio sfx
-- Improve the slingshot elastic animation
-- Parallax background
-- Moving clouds
-- Particle effects
-- Android modules
-- Double tap, drag 'n drop, pinch to zoom,...
-- Using Sensors (GPS, accelerometer, light sensor, bluetooth,...)
-
-## Credits
-
-- **Kenney** for most of the game assets - https://www.kenney.nl/
-- **Hanabi** for the slingshot sprites
-
-## Thanks
-
-- Crystal Bit community for the continuos support
-- Gameloop.it community for the Harvard [CS50 gamedev course](https://github.com/GameLoop-it/cs50_course_materials)
+- Crystal Bit community for the original project
+- Gameloop.it community for the Harvard CS50 gamedev course
 - [YouAreUto](http://youareuto.com/) game & team
 - [Godot Engine Italia](https://godotengineitalia.com/)
+- Godot Engine contributors
+
+## 🐛 Known Issues
+
+- Scene files may need one-time conversion in Godot 4 editor
+- Export presets need to be recreated for Godot 4
+- Some animations may need fine-tuning after migration
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues.
+
+Areas where help is appreciated:
+- iOS/macOS testing and support
+- Additional room designs
+- Performance optimizations
+- Bug fixes
+- Documentation improvements
+
+## 📞 Support
+
+For issues related to:
+- **Migration**: See [MIGRATION_NOTES.md](MIGRATION_NOTES.md)
+- **Gameplay**: See [QUICK_START.md](QUICK_START.md)
+- **Mobile**: See [EXPORT_PRESETS_NOTE.md](EXPORT_PRESETS_NOTE.md)
+- **Testing**: See [TESTING_CHECKLIST.md](TESTING_CHECKLIST.md)
+
+## Original Tutorial Series
+
+The original Godot 3.2 version included video tutorials in Italian:
+- [YouTube Playlist](https://www.youtube.com/playlist?list=PLaCq3HqKQR6rNyqulBsbca-6wzxp8H52r)
+
+Note: These tutorials are for Godot 3.2 and may need adaptation for Godot 4.x
+
+## Version History
+
+- **v1.0** - Original Godot 3.2.1 release
+- **v2.0** - Toppler Edition with enhanced features
+- **v3.0** - Migration to Godot 4.x with mobile optimization
+
+---
+
+Made with ❤️ using [Godot Engine](https://godotengine.org/)

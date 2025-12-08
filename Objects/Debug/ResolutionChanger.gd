@@ -1,7 +1,7 @@
 extends Node
 
 
-export(bool) var change_aspect_ratio_only
+@export var change_aspect_ratio_only: bool
 
 
 func _on_DebugOptions_resolution_selected(res) -> void:

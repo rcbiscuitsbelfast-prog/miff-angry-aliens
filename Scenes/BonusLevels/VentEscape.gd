@@ -13,10 +13,10 @@ var level_completed = false
 var level_failed = false
 
 # Components
-onready var player = $Player
-onready var timer = $Timer
-onready var time_label = $UI/TimeLabel
-onready var hazards = get_tree().get_nodes_in_group("hazards")
+@onready var player = $Player
+@onready var timer = $Timer
+@onready var time_label = $UI/TimeLabel
+@onready var hazards = get_tree().get_nodes_in_group("hazards")
 
 func _ready():
 	# Initialize player position
@@ -26,7 +26,7 @@ func _ready():
 	# Setup timer
 	if timer:
 		timer.wait_time = TIME_LIMIT
-		timer.connect("timeout", self, "_on_time_up")
+		timer.timeout.connect(self._on_time_up)
 		timer.start()
 	
 	# Connect player to hazards
@@ -62,7 +62,7 @@ func connect_hazard_collisions():
 		
 	for hazard in hazards:
 		if hazard.has_signal("body_entered"):
-			hazard.connect("body_entered", self, "_on_hazard_collision", [hazard])
+			hazard.body_entered.connect(self._on_hazard_collision.bind(hazard))
 
 func _on_hazard_collision(body: Node, hazard: Node):
 	if body == player:

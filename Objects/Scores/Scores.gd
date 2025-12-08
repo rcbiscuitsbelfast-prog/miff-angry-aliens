@@ -6,7 +6,7 @@ hits obstacles or enemies. """
 
 signal points_gained
 
-onready var scores_pool =  $ScoresPool
+@onready var scores_pool =  $ScoresPool
 
 const ENEMY_DESTROYED_BASE_POINTS = 500
 
@@ -21,9 +21,9 @@ func _on_EnemiesHandler_enemy_destroyed(enemy: Enemy, impact_momentum: Vector2):
 	score_node.global_position = enemy.global_position
 	score_node.score_value = ENEMY_DESTROYED_BASE_POINTS + impact_momentum.length() / 4
 	score_node.show()
-	emit_signal("points_gained", score_node.score_value)
+	points_gained.emit(score_node.score_value)
 	if not score_node.is_connected("score_hidden", self, "_on_score_hidden_remove_score"):
-		score_node.connect("score_hidden", self, "_on_score_hidden_remove_score")
+		score_node.score_hidden.connect(self._on_score_hidden_remove_score)
 
 
 func _on_score_hidden_remove_score(score):

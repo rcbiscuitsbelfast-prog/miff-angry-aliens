@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fighter_climb_0040.png-7db2cbfec313da13d9587886b2d1ad37.stex"
+path="res://.import/fighter_climb_0040.png-7851df3e037ea5f18c1580a38384661d.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +10,7 @@ metadata={
 [deps]
 
 source_file="res://New/fighter_climb_0040.png"
-dest_files=[ "res://.import/fighter_climb_0040.png-7db2cbfec313da13d9587886b2d1ad37.stex" ]
+dest_files=[ "res://.import/fighter_climb_0040.png-7851df3e037ea5f18c1580a38384661d.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

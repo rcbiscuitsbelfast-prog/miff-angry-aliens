@@ -86,8 +86,8 @@ func update_shake(delta: float):
 	
 	# Calculate shake offset
 	var shake_offset = Vector2.ZERO
-	shake_offset.x = rand_range(-shake_intensity, shake_intensity)
-	shake_offset.y = rand_range(-shake_intensity, shake_intensity)
+	shake_offset.x = randf_range(-shake_intensity, shake_intensity)
+	shake_offset.y = randf_range(-shake_intensity, shake_intensity)
 	
 	offset = original_offset + shake_offset
 	

@@ -1,7 +1,7 @@
 extends Node2D
 
 var launch_force = Vector2(300, -200)
-onready var projectile = get_parent().get_node("Projectile")
+@onready var projectile = get_parent().get_node("Projectile")
 
 
 func _ready() -> void:

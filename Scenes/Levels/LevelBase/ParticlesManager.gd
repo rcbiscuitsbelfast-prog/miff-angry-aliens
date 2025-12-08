@@ -4,26 +4,26 @@ export(PackedScene) var dust_scene
 export(PackedScene) var explosion_scene
 export(PackedScene) var debris_scene
 
-onready var _debris := $Debris
-onready var _dust := $Dust
-onready var _explosions := $Explosions
+@onready var _debris := $Debris
+@onready var _dust := $Dust
+@onready var _explosions := $Explosions
 
-onready var audio = get_parent().get_node("Audio")
+@onready var audio = get_parent().get_node("Audio")
 
 
 func _ready():
 	var timer := Timer.new()
 	add_child(timer)
 	timer.start()
-	timer.connect("timeout", self, "check_unused_objs")
+	timer.timeout.connect(self.check_unused_objs)
 	
 	# connect scene obstacles to the particles and sfx
 	for obstacle in get_tree().get_nodes_in_group("obstacle"):
 		if not obstacle is Obstacle:
 			print_debug(obstacle, " is not of type Obstacle") 
-		obstacle.connect("hit", audio, "_on_Obstacle_hit")
+		obstacle.hit.connect(audio._on_Obstacle_hit)
 		if obstacle is StoneObstacle:
-			obstacle.connect("hit", self, "_on_Obstacle_hit")
+			obstacle.hit.connect(self._on_Obstacle_hit)
 
 
 func spawn_dust_particles(gpos, amount):
@@ -50,18 +50,18 @@ func spawn_explosion(gpos):
 
 
 func create_dust() -> CPUParticles2D:
-	var dust = dust_scene.instance()
+	var dust = dust_scene.instantiate()
 	return dust
 
 
 func create_debris() -> CPUParticles2D:
-	var debris = debris_scene.instance()
+	var debris = debris_scene.instantiate()
 	debris.amount = 4 + randi() % 2
 	return debris
 
 
 func create_explosion():
-	var explosion = explosion_scene.instance()
+	var explosion = explosion_scene.instantiate()
 	return explosion
 
 

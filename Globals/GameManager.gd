@@ -67,11 +67,11 @@ func start_room(room_index: int):
     var room_data = rooms_data[room_index]
     current_state = GameState.PLAYING
     
-    emit_signal("room_started", room_data["name"])
+    room_started.emit(room_data["name"])
     Globals.goto_scene(room_data["scene"], room_data)
 
 func complete_room(score: int, combo: int):
-    emit_signal("room_completed", score, combo)
+    room_completed.emit(score, combo)
     
     # Unlock next room
     if current_room_index + 1 < rooms_data.size():
@@ -119,13 +119,13 @@ func pause_game():
     if current_state == GameState.PLAYING:
         current_state = GameState.PAUSED
         get_tree().paused = true
-        emit_signal("game_state_changed", GameState.PAUSED)
+        game_state_changed.emit(GameState.PAUSED)
 
 func resume_game():
     if current_state == GameState.PAUSED:
         current_state = GameState.PLAYING
         get_tree().paused = false
-        emit_signal("game_state_changed", GameState.PLAYING)
+        game_state_changed.emit(GameState.PLAYING)
 
 func restart_room():
     start_room(current_room_index)

@@ -5,13 +5,13 @@ extends DestructibleProp
 # Found inside destruction area, reacts differently than regular props
 
 # Accessory configuration
-export var has_moustache = true
-export var has_wig = false
-export var has_glasses = true
+@export var has_moustache = true
+@export var has_wig = false
+@export var has_glasses = true
 
 # Movement AI
-export var patrol_speed = 50
-export var detection_radius = 150
+@export var patrol_speed = 50
+@export var detection_radius = 150
 
 var current_direction = 1  # 1 = right, -1 = left
 var player
@@ -67,8 +67,8 @@ func setup_player_detection():
 	detection_area.add_child(detection_shape)
 	add_child(detection_area)
 	
-	detection_area.connect("body_entered", self, "_on_player_detected")
-	detection_area.connect("body_exited", self, "_on_player_lost")
+	detection_area.body_entered.connect(self._on_player_detected)
+	detection_area.body_exited.connect(self._on_player_lost)
 
 func _on_player_detected(body):
 	if body and body.is_in_group("player"):
@@ -131,7 +131,7 @@ func play_hit_animation():
 
 func destroy_person(collider: Node, impact_force: float):
 	# Override destruction to play special animation
-	emit_signal("prop_destroyed", self, collider, impact_force)
+	prop_destroyed.emit(self, collider, impact_force)
 	
 	# Play special death animation
 	play_death_animation()
@@ -162,7 +162,7 @@ func drop_accessories():
 
 func drop_cosmetic(type: String):
 	# Create cosmetic pickup item
-	var pickup = preload("res://Objects/Cosmetics/CosmeticPickup.tscn").instance()
+	var pickup = preload("res://Objects/Cosmetics/CosmeticPickup.tscn").instantiate()
 	pickup.cosmetic_type = type
 	pickup.global_position = global_position + Vector2(0, -20)
 	get_parent().add_child(pickup)

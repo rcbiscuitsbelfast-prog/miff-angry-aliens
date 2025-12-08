@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if elapsed > spawn_rate:
 		elapsed = 0
 		var new_enemy = $Enemy.duplicate()
-		new_enemy.position.x = rand_range(0, 500)
+		new_enemy.position.x = randf_range(0, 500)
 		new_enemy.position.y = -50
 		add_child(new_enemy)
 		enemies_count +=1

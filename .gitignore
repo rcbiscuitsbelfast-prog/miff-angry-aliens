@@ -1,4 +1,30 @@
+# Godot 4.x
+.godot/
+*.translation
+
+# Godot 3.x (legacy)
 .import/
+
+# Project specific
 refs/
 notes/
 builds/
+
+# Backup files from migration
+*.bak
+
+# Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Export templates
+*.apk
+*.aab
+*.ipa
+*.exe
+*.dmg
+*.zip

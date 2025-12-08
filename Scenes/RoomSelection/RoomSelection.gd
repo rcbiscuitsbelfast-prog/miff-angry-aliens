@@ -3,9 +3,9 @@ extends Control
 # Room Selection menu for Toppler
 # Shows available rooms and cosmetic options
 
-onready var room_container = $VBoxContainer
-onready var profile_button = $ProfileButton
-onready var player_face = $ProfileSection/FaceDisplay
+@onready var room_container = $VBoxContainer
+@onready var profile_button = $ProfileButton
+@onready var player_face = $ProfileSection/FaceDisplay
 
 var room_buttons = []
 
@@ -20,7 +20,7 @@ func setup_ui():
 	
 	# Connect profile button
 	if profile_button:
-		profile_button.connect("pressed", self, "_on_profile_pressed")
+		profile_button.pressed.connect(self._on_profile_pressed)
 
 func create_room_buttons():
 	# Get unlocked rooms from game manager
@@ -37,7 +37,7 @@ func create_room_button(room_data: Dictionary, index: int) -> Button:
 	var btn = Button.new()
 	btn.text = room_data["name"] + "\n" + room_data["description"] + "\nTarget: " + str(room_data["target_score"])
 	btn.custom_minimum_size = Vector2(200, 80)
-	btn.connect("pressed", self, "_on_room_selected", [index])
+	btn.pressed.connect(self._on_room_selected.bind(index))
 	return btn
 
 func update_player_profile_display():
@@ -82,7 +82,7 @@ func show_cosmetics_menu():
 		btn.text = hat_name
 		if hat_name == PlayerProfile.current_hat:
 			btn.modulate = Color.yellow
-		btn.connect("pressed", self, "_on_hat_selected", [hat_name])
+		btn.pressed.connect(self._on_hat_selected.bind(hat_name))
 		vbox.add_child(btn)
 	
 	# Glasses selection
@@ -95,7 +95,7 @@ func show_cosmetics_menu():
 		btn.text = glasses_name
 		if glasses_name == PlayerProfile.current_glasses:
 			btn.modulate = Color.yellow
-		btn.connect("pressed", self, "_on_glasses_selected", [glasses_name])
+		btn.pressed.connect(self._on_glasses_selected.bind(glasses_name))
 		vbox.add_child(btn)
 	
 	dialog.add_child(vbox)

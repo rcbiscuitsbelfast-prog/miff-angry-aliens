@@ -3,11 +3,11 @@ extends Control
 # Toppler Main Menu
 # Satirical school destruction game menu
 
-onready var title = $Title
-onready var play_button = $VBoxContainer/PlayButton
-onready var settings_button = $VBoxContainer/SettingsButton
-onready var exit_button = $VBoxContainer/ExitButton
-onready var face_display = $FaceDisplay
+@onready var title = $Title
+@onready var play_button = $VBoxContainer/PlayButton
+@onready var settings_button = $VBoxContainer/SettingsButton
+@onready var exit_button = $VBoxContainer/ExitButton
+@onready var face_display = $FaceDisplay
 
 func _ready():
 	# Setup UI
@@ -20,11 +20,11 @@ func _ready():
 
 func setup_buttons():
 	if play_button:
-		play_button.connect("pressed", self, "_on_play_pressed")
+		play_button.pressed.connect(self._on_play_pressed)
 	if settings_button:
-		settings_button.connect("pressed", self, "_on_settings_pressed")
+		settings_button.pressed.connect(self._on_settings_pressed)
 	if exit_button:
-		exit_button.connect("pressed", self, "_on_exit_pressed")
+		exit_button.pressed.connect(self._on_exit_pressed)
 
 func update_face_display():
 	if face_display and PlayerProfile.face_texture:

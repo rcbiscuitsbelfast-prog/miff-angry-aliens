@@ -1,6 +1,6 @@
 extends Node
 
-onready var slingshot = get_node("../Slingshot")
+@onready var slingshot = get_node("../Slingshot")
 
 signal level_finished
 
@@ -12,8 +12,8 @@ func _ready():
 func load_projectile():
 	var proj = get_child(0)
 	if proj == null or !(proj is Projectile):
-		yield(get_tree().create_timer(3), "timeout")
-		emit_signal("level_finished")
+		await get_tree().create_timer(3).timeout
+		level_finished.emit()
 		return
 	# reparent
 	$Proxy.position = proj.position
@@ -23,7 +23,7 @@ func load_projectile():
 	# start animation
 	$AnimationPlayer.play("load_projectile")
 	# wait it to finish
-	yield($AnimationPlayer, "animation_finished")
+	await $AnimationPlayer.animation_finished
 	# reparent and load projectile
 	$Proxy.remove_child(proj)
 	get_parent().add_child(proj)
@@ -32,5 +32,5 @@ func load_projectile():
 
 
 func _on_Slingshot_projectile_launched(projectile):
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	load_projectile()

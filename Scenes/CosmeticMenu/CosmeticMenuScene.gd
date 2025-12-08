@@ -4,14 +4,14 @@ extends Control
 class_name CosmeticMenu
 
 # UI References
-onready var hat_container = $ScrollContainer/VBoxContainer/HatSection/HatGrid
-onready var glasses_container = $ScrollContainer/VBoxContainer/GlassesSection/GlassesGrid
-onready var moustache_container = $ScrollContainer/VBoxContainer/MoustacheSection/MoustacheGrid
-onready var wig_container = $ScrollContainer/VBoxContainer/WigSection/WigGrid
-onready var preview_sprite = $PreviewPanel/PreviewSprite
-onready var face_preview = $PreviewPanel/FacePreview
-onready var apply_button = $BottomPanel/ApplyButton
-onready var cancel_button = $BottomPanel/CancelButton
+@onready var hat_container = $ScrollContainer/VBoxContainer/HatSection/HatGrid
+@onready var glasses_container = $ScrollContainer/VBoxContainer/GlassesSection/GlassesGrid
+@onready var moustache_container = $ScrollContainer/VBoxContainer/MoustacheSection/MoustacheGrid
+@onready var wig_container = $ScrollContainer/VBoxContainer/WigSection/WigGrid
+@onready var preview_sprite = $PreviewPanel/PreviewSprite
+@onready var face_preview = $PreviewPanel/FacePreview
+@onready var apply_button = $BottomPanel/ApplyButton
+@onready var cancel_button = $BottomPanel/CancelButton
 
 # Cosmetic data
 var selected_cosmetics = {
@@ -54,8 +54,8 @@ func _ready():
 
 func setup_ui():
 	# Connect button signals
-	apply_button.connect("pressed", self, "_on_apply_pressed")
-	cancel_button.connect("pressed", self, "_on_cancel_pressed")
+	apply_button.pressed.connect(self._on_apply_pressed)
+	cancel_button.pressed.connect(self._on_cancel_pressed)
 	
 	# Create cosmetic option buttons
 	setup_cosmetic_buttons("hat", hat_container)
@@ -71,7 +71,7 @@ func setup_cosmetic_buttons(cosmetic_type: String, container: GridContainer):
 		var button = Button.new()
 		button.text = cosmetic_name.capitalize()
 		button.custom_minimum_size = Vector2(80, 80)
-		button.connect("pressed", self, "_on_cosmetic_selected", [cosmetic_type, cosmetic_name])
+		button.pressed.connect(self._on_cosmetic_selected.bind(cosmetic_type, cosmetic_name))
 		container.add_child(button)
 
 func _on_cosmetic_selected(cosmetic_type: String, cosmetic_name: String):
@@ -133,16 +133,16 @@ func _on_apply_pressed():
 		player_profile.current_moustache = selected_cosmetics["moustache"]
 		player_profile.current_wig = selected_cosmetics["wig"]
 		player_profile.save_profile()
-		player_profile.emit_signal("cosmetics_updated")
+		player_profile.cosmetics_updated.emit()
 	
-	emit_signal("cosmetics_applied", selected_cosmetics)
+	cosmetics_applied.emit(selected_cosmetics)
 	hide_menu()
 
 func _on_cancel_pressed():
 	hide_menu()
 
 func hide_menu():
-	emit_signal("menu_closed")
+	menu_closed.emit()
 	queue_free()
 
 func show_menu():

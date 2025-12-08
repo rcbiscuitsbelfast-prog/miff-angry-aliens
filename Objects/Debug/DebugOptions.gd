@@ -2,7 +2,7 @@ extends Control
 
 signal resolution_selected
 
-onready var checkboxes = [
+@onready var checkboxes = [
 	$VBoxContainer/HBoxContainer/iPhoneX,
 	$VBoxContainer/HBoxContainer2/iPad
 ]
@@ -15,7 +15,7 @@ var resolutions = {
 
 func _ready() -> void:
 	for cbox in checkboxes:
-		cbox.connect("toggled", self, "_on_checkbox_toggled", [cbox])
+		cbox.toggled.connect(self._on_checkbox_toggled.bind(cbox))
 
 
 func _input(event: InputEvent) -> void:
@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 func _on_checkbox_toggled(toggled, cbox):
 	if cbox.pressed:
 		var selected_res = resolutions[cbox.name]
-		emit_signal("resolution_selected", selected_res)
+		resolution_selected.emit(selected_res)
 
 	if cbox.pressed:
 		# disable all the others check boxes
