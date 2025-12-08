@@ -140,7 +140,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="debug" type="Sprite" parent="CameraFocus"]
+[node name="debug" type="Sprite2D" parent="CameraFocus"]
 visible = false
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
@@ -197,7 +197,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="bg" type="Sprite" parent="GUI/TouchScreenButton"]
+[node name="bg" type="Sprite2D" parent="GUI/TouchScreenButton"]
 modulate = Color( 0.235294, 0.235294, 0.235294, 1 )
 show_behind_parent = true
 position = Vector2( -8, -8 )

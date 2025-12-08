@@ -41,7 +41,7 @@ margin_bottom = 473.0
 text = "Preview"
 align = 1
 
-[node name="PreviewSprite" type="Sprite" parent="PreviewPanel"]
+[node name="PreviewSprite" type="Sprite2D" parent="PreviewPanel"]
 position = Vector2( 110, 200 )
 
 [node name="FacePreview" type="TextureRect" parent="PreviewPanel"]

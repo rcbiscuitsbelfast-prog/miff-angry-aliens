@@ -15,15 +15,15 @@ script = ExtResource("3_3")
 show_behind_parent = true
 position = Vector2( 280, 350 )
 
-[node name="colored_desert" type="Sprite" parent="BG"]
+[node name="colored_desert" type="Sprite2D" parent="BG"]
 position = Vector2( 0, -327 )
 texture = ExtResource( 4 )
 
-[node name="colored_desert2" type="Sprite" parent="BG"]
+[node name="colored_desert2" type="Sprite2D" parent="BG"]
 position = Vector2( 1012, -327 )
 texture = ExtResource( 4 )
 
-[node name="colored_desert3" type="Sprite" parent="BG"]
+[node name="colored_desert3" type="Sprite2D" parent="BG"]
 position = Vector2( 2010, -327 )
 texture = ExtResource( 4 )
 

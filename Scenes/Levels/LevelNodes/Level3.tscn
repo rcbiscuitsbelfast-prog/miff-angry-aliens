@@ -100,23 +100,23 @@ __meta__ = {
 [node name="Background" type="Node2D" parent="."]
 position = Vector2( -4, 0 )
 
-[node name="blue_desert" type="Sprite" parent="Background"]
+[node name="blue_desert" type="Sprite2D" parent="Background"]
 position = Vector2( -146, 223 )
 texture = ExtResource( 5 )
 
-[node name="blue_desert2" type="Sprite" parent="Background"]
+[node name="blue_desert2" type="Sprite2D" parent="Background"]
 position = Vector2( 878, 223 )
 texture = ExtResource( 5 )
 
-[node name="blue_desert3" type="Sprite" parent="Background"]
+[node name="blue_desert3" type="Sprite2D" parent="Background"]
 position = Vector2( 1902, 223 )
 texture = ExtResource( 5 )
 
-[node name="blue_desert4" type="Sprite" parent="Background"]
+[node name="blue_desert4" type="Sprite2D" parent="Background"]
 position = Vector2( 1902, 223 )
 texture = ExtResource( 5 )
 
-[node name="blue_desert5" type="Sprite" parent="Background"]
+[node name="blue_desert5" type="Sprite2D" parent="Background"]
 position = Vector2( 2922.19, 224.089 )
 texture = ExtResource( 5 )
 
@@ -130,14 +130,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="TileMap"]
+[node name="Sprite" type="Sprite2D" parent="TileMap"]
 position = Vector2( 2991.18, 406.356 )
 rotation = 1.5708
 scale = Vector2( 0.227524, 3630.37 )
 texture = SubResource("4_4")
 centered = false
 
-[node name="BlueSky" type="Sprite" parent="TileMap"]
+[node name="BlueSky" type="Sprite2D" parent="TileMap"]
 position = Vector2( 3075.44, -750.998 )
 rotation = 1.5708
 scale = Vector2( 0.227524, 3735.14 )

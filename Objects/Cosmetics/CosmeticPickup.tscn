@@ -16,7 +16,7 @@ cosmetic_type = "hat"
 cosmetic_name = "default"
 pickup_sound = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

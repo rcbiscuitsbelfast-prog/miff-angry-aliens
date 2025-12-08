@@ -11,6 +11,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CloudSprite" type="Sprite" parent="."]
+[node name="CloudSprite" type="Sprite2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )

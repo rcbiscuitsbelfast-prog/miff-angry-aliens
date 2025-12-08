@@ -12,7 +12,7 @@ extents = Vector2( 34, 35 )
 mass = 0.5
 script = ExtResource("2_2")
 
-[node name="elementWood010" type="Sprite" parent="."]
+[node name="elementWood010" type="Sprite2D" parent="."]
 scale = Vector2( 1, 1.022 )
 texture = ExtResource( 1 )
 
