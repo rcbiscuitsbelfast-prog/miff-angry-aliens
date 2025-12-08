@@ -14,7 +14,7 @@ enum AnimationState {
 }
 
 var current_animation = AnimationState.IDLE
-@onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 
 func _ready():

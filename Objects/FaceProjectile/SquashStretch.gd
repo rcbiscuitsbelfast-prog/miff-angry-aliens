@@ -5,7 +5,7 @@ extends Node
 var impact_tween: Tween
 
 func _ready():
-	impact_tween = Tween.new()
+	impact_tween = create_tween()
 	add_child(impact_tween)
 
 func _on_impact(body: Node):

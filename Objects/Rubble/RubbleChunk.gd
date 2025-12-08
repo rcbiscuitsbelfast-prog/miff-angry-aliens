@@ -10,7 +10,7 @@ var settled = false
 var settle_timer = 0.0
 var original_position: Vector2
 
-@onready var sprite = $Sprite
+@onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
 
 func _ready():

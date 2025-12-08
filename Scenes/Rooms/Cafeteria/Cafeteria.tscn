@@ -1,17 +1,17 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=18 format=3 uid="uid://Cafeteria"]
 
-[ext_resource path="res://Scenes/Rooms/Cafeteria/Cafeteria.gd" type="Script" id=1]
-[ext_resource path="res://Objects/Slingshot/Slingshot.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Globals/RageSystem.gd" type="Script" id=3]
-[ext_resource path="res://Objects/Camera/EnhancedCameraFocus.gd" type="Script" id=4]
-[ext_resource path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Backgrounds/blue_desert.png" type="Texture" id=5]
-[ext_resource path="res://Objects/Doors/ExitDoor.gd" type="Script" id=6]
-[ext_resource path="res://Assets/graphics/kenney2/particle.png" type="Texture" id=7]
-[ext_resource path="res://Objects/Props/DestructibleProp.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Objects/Rubble/RubbleChunk.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Wood elements/elementWood054.png" type="Texture" id=10]
-[ext_resource path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal049.png" type="Texture" id=11]
-[ext_resource path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Stone elements/elementStone051.png" type="Texture" id=12]
+[ext_resource type="Script" path="res://Scenes/Rooms/Cafeteria/Cafeteria.gd" id="1_1"]
+[ext_resource type="PackedScene" path="res://Objects/Slingshot/Slingshot.tscn" id="2_2"]
+[ext_resource type="Script" path="res://Globals/RageSystem.gd" id="3_3"]
+[ext_resource type="Script" path="res://Objects/Camera/EnhancedCameraFocus.gd" id="4_4"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Backgrounds/blue_desert.png" id="5_5"]
+[ext_resource type="Script" path="res://Objects/Doors/ExitDoor.gd" id="6_6"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney2/particle.png" id="7_7"]
+[ext_resource type="PackedScene" path="res://Objects/Props/DestructibleProp.tscn" id="8_8"]
+[ext_resource type="PackedScene" path="res://Objects/Rubble/RubbleChunk.tscn" id="9_9"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Wood elements/elementWood054.png" id="10_10"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal049.png" id="11_11"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Stone elements/elementStone051.png" id="12_12"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 80 )
@@ -29,51 +29,51 @@ radius = 30.0
 radius = 35.0
 
 [node name="Cafeteria" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 
-[node name="Background" type="Sprite" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2( 475, 270 )
 scale = Vector2( 2.5, 1.5 )
 texture = ExtResource( 5 )
 
 [node name="Props" type="Node2D" parent="."]
 
-[node name="Table1" parent="Props" instance=ExtResource( 8 )]
+[node name="Table1" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 250, 280 )
 prop_type = 4
 max_hitpoints = 2
 
-[node name="Table2" parent="Props" instance=ExtResource( 8 )]
+[node name="Table2" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 400, 280 )
 prop_type = 4
 max_hitpoints = 2
 
-[node name="Table3" parent="Props" instance=ExtResource( 8 )]
+[node name="Table3" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 550, 280 )
 prop_type = 4
 max_hitpoints = 2
 
-[node name="Table4" parent="Props" instance=ExtResource( 8 )]
+[node name="Table4" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 700, 280 )
 prop_type = 4
 max_hitpoints = 2
 
-[node name="Locker" parent="Props" instance=ExtResource( 8 )]
+[node name="Locker" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 100, 200 )
 prop_type = 0
 max_hitpoints = 3
 
-[node name="VendingMachine" parent="Props" instance=ExtResource( 8 )]
+[node name="VendingMachine" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 800, 200 )
 prop_type = 2
 max_hitpoints = 4
 
-[node name="Desk" parent="Props" instance=ExtResource( 8 )]
+[node name="Desk" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 450, 180 )
 prop_type = 1
 max_hitpoints = 2
 
-[node name="Bookshelf" parent="Props" instance=ExtResource( 8 )]
+[node name="Bookshelf" parent="Props" instance=ExtResource("8_8")]
 position = Vector2( 50, 150 )
 prop_type = 3
 max_hitpoints = 1
@@ -81,7 +81,7 @@ max_hitpoints = 1
 [node name="FaceLauncher" type="Node2D" parent="."]
 position = Vector2( 150, 450 )
 
-[node name="Slingshot" parent="FaceLauncher" instance=ExtResource( 2 )]
+[node name="Slingshot" parent="FaceLauncher" instance=ExtResource("2_2")]
 
 [node name="PlayerSpawn" type="Position2D" parent="."]
 position = Vector2( 150, 400 )
@@ -91,42 +91,42 @@ position = Vector2( 150, 450 )
 
 [node name="ExitDoor" type="Area2D" parent="."]
 position = Vector2( 800, 250 )
-script = ExtResource( 6 )
+script = ExtResource("6_6")
 locked = true
 
-[node name="Sprite" type="Sprite" parent="ExitDoor"]
+[node name="Sprite" type="Sprite2D" parent="ExitDoor"]
 texture = ExtResource( 7 )
 scale = Vector2( 3, 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 475, 520 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-shape = SubResource( 2 )
+shape = SubResource("2_2")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2( 10, 270 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-shape = SubResource( 3 )
+shape = SubResource("3_3")
 
 [node name="RightWall" type="StaticBody2D" parent="."]
 position = Vector2( 940, 270 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-shape = SubResource( 4 )
+shape = SubResource("4_4")
 
 [node name="CeilingTop" type="StaticBody2D" parent="."]
 position = Vector2( 475, 30 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingTop"]
-shape = SubResource( 5 )
+shape = SubResource("5_5")
 
 [node name="CameraFocus" type="Node2D" parent="."]
-script = ExtResource( 4 )
+script = ExtResource("4_4")
 
 [node name="RageSystem" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3_3")

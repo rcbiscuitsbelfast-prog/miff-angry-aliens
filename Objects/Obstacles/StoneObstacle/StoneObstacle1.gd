@@ -22,10 +22,10 @@ func _ready():
 
 func set_damaged(damaged):
 	if damaged:
-		$Sprite.hide()
+		$Sprite2D.hide()
 		$SpriteDamaged.show()
 	else:
-		$Sprite.show()
+		$Sprite2D.show()
 		$SpriteDamaged.hide()
 
 

@@ -10,14 +10,14 @@ enum AnimState { IDLE, WALK, JUMP, JUMP_UP, JUMP_DOWN, CLIMB }
 
 # References
 @onready var animated_sprite = get_parent().get_node_or_null("AnimatedSprite")
-@onready var sprite = get_parent().get_node_or_null("Sprite")
+@onready var sprite = get_parent().get_node_or_null("Sprite2D")
 
 # Animation configuration
 var current_animation = AnimState.IDLE
 var is_playing = false
 var facing_right = true
 
-# Sprite sheet info
+# Sprite2D sheet info
 var frame_height = 64
 var frame_width = 64
 var frames_per_animation = {}

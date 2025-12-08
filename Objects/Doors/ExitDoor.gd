@@ -12,7 +12,7 @@ signal door_unlocked
 signal door_entered(body)
 
 func _ready():
-    sprite = $Sprite
+    sprite = $Sprite2D
     collision_shape = $CollisionShape2D
     update_door_state()
     body_entered.connect(_on_body_entered)

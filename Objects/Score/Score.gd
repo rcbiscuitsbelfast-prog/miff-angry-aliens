@@ -42,7 +42,7 @@ func set_distance(val):
 func appear_animation():
     var delay = 0
     # create tween
-    var tween = Tween.new()
+    var tween = create_tween()
     add_child(tween)
     # for each number sprite
     for spr in sprites.get_children():
@@ -78,7 +78,7 @@ func increase(points):
 func show():
     .show()
     appear_animation()
-    var tween = Tween.new()
+    var tween = create_tween()
     add_child(tween)
     tween.interpolate_property(self,
         "modulate:a", 1, 0, 0.5, Tween.TRANS_EXPO, Tween.EASE_IN, 0.7)
@@ -115,7 +115,7 @@ func _update_sprites(animate=false):
         # if there is a previous
         if last_spr:
                 num_spr.position.x = last_spr.position.x + last_spr.texture.get_width() + distance
-        num_spr.name = "Sprite" + digit
+        num_spr.name = "Sprite2D" + digit
         last_spr = num_spr
         idx+=1
     match grow_direction:

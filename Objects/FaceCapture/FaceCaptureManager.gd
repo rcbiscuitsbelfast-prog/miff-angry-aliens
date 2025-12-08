@@ -132,7 +132,7 @@ func load_uploaded_image(path: String):
 	var error = image.load(path)
 	
 	if error == OK:
-		var texture = ImageTexture.new()
+		var texture = ImageTexture2D.new()
 		texture.create_from_image(image)
 		set_captured_texture(texture)
 	else:

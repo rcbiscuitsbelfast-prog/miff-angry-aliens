@@ -38,21 +38,21 @@ func setup_accessories():
 		add_glasses()
 
 func add_moustache():
-	var moustache = Sprite.new()
+	var moustache = Sprite2D.new()
 	moustache.texture = load("res://Assets/graphics/particle.png")  # Placeholder
 	moustache.position = Vector2(0, -15)
 	moustache.scale = Vector2(0.3, 0.1)
 	add_child(moustache)
 
 func add_wig():
-	var wig = Sprite.new()
+	var wig = Sprite2D.new()
 	wig.texture = load("res://Assets/graphics/particle.png")  # Placeholder
 	wig.position = Vector2(0, -25)
 	wig.scale = Vector2(0.4, 0.3)
 	add_child(wig)
 
 func add_glasses():
-	var glasses = Sprite.new()
+	var glasses = Sprite2D.new()
 	glasses.texture = load("res://Assets/graphics/particle.png")  # Placeholder
 	glasses.position = Vector2(0, -18)
 	glasses.scale = Vector2(0.35, 0.15)

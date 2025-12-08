@@ -1,17 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://ContributeScreen"]
 
-[ext_resource path="res://Scenes/MainMenu/BackgroundColorRect.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/GUI/Button1/Button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/fonts/Kenney Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scenes/Screens/ContributeScreen.gd" type="Script" id=4]
-[ext_resource path="res://Objects/GUI/Label/Label.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/graphics/kenney2/gui/panel.png" type="Texture" id=6]
+[ext_resource type="PackedScene" path="res://Scenes/MainMenu/BackgroundColorRect.tscn" id="1_1"]
+[ext_resource type="PackedScene" path="res://Objects/GUI/Button1/Button.tscn" id="2_2"]
+[ext_resource type="DynamicFontData" path="res://Assets/fonts/Kenney Bold.ttf" id="3_3"]
+[ext_resource type="Script" path="res://Scenes/Screens/ContributeScreen.gd" id="4_4"]
+[ext_resource type="PackedScene" path="res://Objects/GUI/Label/Label.tscn" id="5_5"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney2/gui/panel.png" id="6_6"]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
-[node name="ColorRect" instance=ExtResource( 1 )]
-script = ExtResource( 4 )
+[node name="ColorRect" instance=ExtResource("1_1")]
+script = ExtResource("4_4")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." index="0"]
 anchor_left = 0.5
@@ -51,12 +51,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" index="0" instance=ExtResource( 5 )]
+[node name="Label" parent="NinePatchRect/MarginContainer/VBoxContainer" index="0" instance=ExtResource("5_5")]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 409.0
 margin_bottom = 240.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource("1_1")
 custom_colors/font_color = Color( 0.368627, 0.47451, 0.556863, 1 )
 text = "Sorry, there are no other levels but...
 
@@ -76,7 +76,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Github" parent="NinePatchRect/MarginContainer/VBoxContainer" index="2" instance=ExtResource( 2 )]
+[node name="Github" parent="NinePatchRect/MarginContainer/VBoxContainer" index="2" instance=ExtResource("2_2")]
 margin_left = 84.0
 margin_top = 248.0
 margin_right = 324.0
@@ -95,7 +95,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" parent="NinePatchRect/MarginContainer/VBoxContainer" index="4" instance=ExtResource( 2 )]
+[node name="Back" parent="NinePatchRect/MarginContainer/VBoxContainer" index="4" instance=ExtResource("2_2")]
 margin_left = 84.0
 margin_top = 346.0
 margin_right = 324.0

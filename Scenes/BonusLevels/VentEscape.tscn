@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://VentEscape"]
 
-[ext_resource path="res://Scenes/BonusLevels/VentEscape.gd" type="Script" id=1]
-[ext_resource path="res://Objects/StickClone/StickClone.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Scenes/BonusLevels/VentEscape.gd" id="1_1"]
+[ext_resource type="PackedScene" path="res://Objects/StickClone/StickClone.tscn" id="2_2"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 80 )
@@ -10,9 +10,9 @@ extents = Vector2( 50, 80 )
 extents = Vector2( 200, 20 )
 
 [node name="VentEscape" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource("2_2")]
 position = Vector2( 100, 300 )
 
 [node name="StartPoint" type="Position2D" parent="."]
@@ -22,7 +22,7 @@ position = Vector2( 100, 300 )
 position = Vector2( 900, 300 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
@@ -44,15 +44,15 @@ valign = 1
 [node name="SteamVent1" type="Area2D" parent="Hazards"]
 position = Vector2( 300, 400 )
 groups = [ "hazards" ]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 hazard_type = "steam"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/SteamVent1"]
-shape = SubResource( 2 )
+shape = SubResource("2_2")
 
 [node name="Fan1" type="Area2D" parent="Hazards"]
 position = Vector2( 600, 200 )
 groups = [ "hazards" ]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 hazard_type = "fan"
 push_direction = Vector2( 1, 0 )

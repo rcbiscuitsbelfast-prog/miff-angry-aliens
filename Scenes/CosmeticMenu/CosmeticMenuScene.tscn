@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://CosmeticMenuScene"]
 
-[ext_resource path="res://Scenes/CosmeticMenu/CosmeticMenuScene.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scenes/CosmeticMenu/CosmeticMenuScene.gd" id="1_1"]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.2, 0.2, 0.2, 0.9 )
@@ -8,7 +8,7 @@ bg_color = Color( 0.2, 0.2, 0.2, 0.9 )
 [node name="CosmeticMenuScene" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -29,7 +29,7 @@ anchor_left = 0.0
 anchor_top = 0.1
 anchor_right = 0.3
 anchor_bottom = 0.9
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource("1_1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PreviewPanel"]
 margin_left = 7.0
@@ -41,7 +41,7 @@ margin_bottom = 473.0
 text = "Preview"
 align = 1
 
-[node name="PreviewSprite" type="Sprite" parent="PreviewPanel"]
+[node name="PreviewSprite" type="Sprite2D" parent="PreviewPanel"]
 position = Vector2( 110, 200 )
 
 [node name="FacePreview" type="TextureRect" parent="PreviewPanel"]

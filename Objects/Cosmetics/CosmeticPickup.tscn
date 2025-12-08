@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://CosmeticPickup"]
 
-[ext_resource path="res://Objects/Cosmetics/CosmeticPickup.gd" type="Script" id=1]
-[ext_resource path="res://Assets/graphics/kenney2/particle.png" type="Texture" id=2]
-[ext_resource path="res://Assets/sounds/button-pressed.wav" type="AudioStream" id=3]
+[ext_resource type="Script" path="res://Objects/Cosmetics/CosmeticPickup.gd" id="1_1"]
+[ext_resource type="Texture" path="res://Assets/graphics/kenney2/particle.png" id="2_2"]
+[ext_resource type="AudioStream" path="res://Assets/sounds/button-pressed.wav" id="3_3"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -11,15 +11,15 @@ extents = Vector2( 20, 20 )
 groups = [
 "cosmetic_pickups"
 ]
-script = ExtResource( 1 )
+script = ExtResource("1_1")
 cosmetic_type = "hat"
 cosmetic_name = "default"
 pickup_sound = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1_1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -19,11 +19,11 @@ func _ready():
 
 
 func get_width() -> float:
-    return $Sprite.texture.get_width() * $Sprite.global_scale.x
+    return $Sprite2D.texture.get_width() * $Sprite2D.global_scale.x
 
 
 func get_height() ->float:
-    return $Sprite.texture.get_height() * $Sprite.global_scale.y
+    return $Sprite2D.texture.get_height() * $Sprite2D.global_scale.y
 
 
 func apply_impulse(impulse: Vector2, offset: Vector2 = Vector2.ZERO):

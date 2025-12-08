@@ -7,7 +7,7 @@ class_name Room
 @export var room_name: String = "Untitled Room"
 @export var target_destruction_score: int = 5000
 @export var has_bonus_level: bool = false
-export(PackedScene) var bonus_level_scene
+@export(PackedScene) var bonus_level_scene
 
 # Room state
 var current_destruction_score = 0
