@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" path="res://Scenes/MainMenu/BackgroundColorRect.tscn" id="1_1"]
 [ext_resource type="PackedScene" path="res://Objects/GUI/Button1/Button.tscn" id="2_2"]
-[ext_resource type="DynamicFontData" path="res://Assets/fonts/Kenney Bold.ttf" id="3_3"]
+[ext_resource type="FontData" path="res://Assets/fonts/Kenney Bold.ttf" id="3_3"]
 [ext_resource type="Script" path="res://Scenes/Screens/ContributeScreen.gd" id="4_4"]
 [ext_resource type="PackedScene" path="res://Objects/GUI/Label/Label.tscn" id="5_5"]
 [ext_resource type="Texture" path="res://Assets/graphics/kenney2/gui/panel.png" id="6_6"]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Font" id=1]
 font_data = ExtResource( 3 )
 
 [node name="ColorRect" instance=ExtResource("1_1")]

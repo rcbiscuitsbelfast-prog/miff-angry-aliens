@@ -1,4 +1,5 @@
 extends Node
+class_name Globals
 
 
 var main_scene: Node

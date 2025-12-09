@@ -107,10 +107,10 @@ tracks/0/keys = {
 "values": [ 90.0, 80.0, 90.0, 90.0, 80.0, 90.0 ]
 }
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="FontData" id=4]
 font_path = "res://Assets/fonts/Kenney Bold.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="Font" id=5]
 size = 26
 extra_spacing_char = 1
 extra_spacing_space = 10

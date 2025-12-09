@@ -25,7 +25,7 @@ align = 1
 valign = 1
 custom_font = SubResource("1_1")
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Font" id=1]
 size = 72
 
 [node name="Subtitle" type="Label" parent="."]

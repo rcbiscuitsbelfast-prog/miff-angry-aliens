@@ -10,7 +10,7 @@
 [ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Aliens/alienBlue_square.png" id="8_8"]
 [ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Aliens/alienGreen_square.png" id="9_9"]
 [ext_resource type="Texture" path="res://Assets/graphics/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal018.png" id="10_10"]
-[ext_resource type="DynamicFont" path="res://Objects/GUI/Font.tres" id="11_11"]
+[ext_resource type="Font" path="res://Objects/GUI/Font.tres" id="11_11"]
 [ext_resource type="Script" path="res://Objects/GUI/Button1/Button.gd" id="12_12"]
 [ext_resource type="AudioStream" path="res://Assets/sounds/noises.ogg" id="14_14"]
 [ext_resource type="AudioStream" path="res://Assets/sounds/anticipation.ogg" id="16_16"]

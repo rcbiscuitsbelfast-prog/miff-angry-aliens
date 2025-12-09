@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://Button"]
 
-[ext_resource type="DynamicFont" path="res://Objects/GUI/Font.tres" id="1_1"]
+[ext_resource type="Font" path="res://Objects/GUI/Font.tres" id="1_1"]
 [ext_resource type="Texture" path="res://Assets/graphics/kenney2/gui/blue_button02.png" id="2_2"]
 [ext_resource type="AudioStream" path="res://Assets/sounds/button-pressed.wav" id="3_3"]
 [ext_resource type="Script" path="res://Objects/GUI/Button1/Button.gd" id="4_4"]

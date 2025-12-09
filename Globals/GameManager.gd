@@ -1,4 +1,5 @@
 extends Node
+class_name GameManager
 
 # Main Toppler Game Manager
 # Orchestrates game flow, room progression, and cosmetics
