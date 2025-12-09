@@ -14,7 +14,7 @@ var angle_randomness = 30
 
 
 func _on_EnemiesHandler_enemy_destroyed(enemy: Enemy, impact_momentum: Vector2):
-	var score_node: Node2D = scores_pool.get_instance()
+	var score_node: Node2D = scores_pool.get_instantiate()
 	if score_node.get_parent() == null:
 		add_child(score_node)
 	score_node.rotation_degrees = (randi() % angle_randomness) - (angle_randomness % 2)

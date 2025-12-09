@@ -6,116 +6,24 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
-"base": "Node2D",
-"class": "BonusVentLevel",
-"language": "GDScript",
-"path": "res://Scenes/BonusLevels/VentEscape.gd"
-}, {
-"base": "Control",
-"class": "CosmeticMenu",
-"language": "GDScript",
-"path": "res://Scenes/CosmeticMenu/CosmeticMenuScene.gd"
-}, {
-"base": "Obstacle",
-"class": "DestructibleProp",
-"language": "GDScript",
-"path": "res://Objects/Props/DestructibleProp.gd"
-}, {
-"base": "RigidBody2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Objects/Enemy/Enemy.gd"
-}, {
-"base": "Area2D",
-"class": "ExitDoor",
-"language": "GDScript",
-"path": "res://Objects/Doors/ExitDoor.gd"
-}, {
-"base": "Control",
-"class": "FaceCaptureManager",
-"language": "GDScript",
-"path": "res://Objects/FaceCapture/FaceCaptureManager.gd"
-}, {
-"base": "Projectile",
-"class": "FaceProjectile",
-"language": "GDScript",
-"path": "res://Objects/FaceProjectile/FaceProjectile.gd"
-}, {
-"base": "Enemy",
-"class": "FighterEnemy",
-"language": "GDScript",
-"path": "res://Objects/Enemy/FighterEnemy.gd"
-}, {
-"base": "Node",
-"class": "Node2DPool",
-"language": "GDScript",
-"path": "res://Objects/Pool/Node2DPool.gd"
-}, {
-"base": "RigidBody2D",
-"class": "Obstacle",
-"language": "GDScript",
-"path": "res://Objects/Obstacles/Obstacle.gd"
-}, {
-"base": "Node2D",
-"class": "PoolableNode2D",
-"language": "GDScript",
-"path": "res://Objects/Pool/PoolableNode2D.gd"
-}, {
-"base": "RigidBody2D",
-"class": "Projectile",
-"language": "GDScript",
-"path": "res://Objects/Projectile/Projectile.gd"
-}, {
-"base": "Node2D",
-"class": "Room",
-"language": "GDScript",
-"path": "res://Scenes/Rooms/RoomBase.gd"
-}, {
-"base": "RigidBody2D",
-"class": "RubbleChunk",
-"language": "GDScript",
-"path": "res://Objects/Rubble/RubbleChunk.gd"
-}, {
-"base": "CharacterBody2D",
-"class": "StickClone",
-"language": "GDScript",
-"path": "res://Objects/StickClone/StickClone.gd"
-}, {
-"base": "Node",
-"class": "StickCloneAnimator",
-"language": "GDScript",
-"path": "res://Objects/StickClone/StickCloneAnimator.gd"
-}, {
-"base": "DestructibleProp",
-"class": "StickPersonEnemy",
-"language": "GDScript",
-"path": "res://Objects/Enemies/StickPersonEnemy.gd"
-}, {
-"base": "Obstacle",
-"class": "StoneObstacle",
-"language": "GDScript",
-"path": "res://Objects/Obstacles/StoneObstacle/StoneObstacle1.gd"
-} ]
-_global_script_class_icons={
-"BonusVentLevel": "",
-"CosmeticMenu": "",
-"DestructibleProp": "",
-"Enemy": "",
-"ExitDoor": "",
-"FaceCaptureManager": "",
-"FaceProjectile": "",
-"FighterEnemy": "",
-"Node2DPool": "",
-"Obstacle": "",
-"PoolableNode2D": "",
-"Projectile": "",
-"Room": "",
-"RubbleChunk": "",
-"StickClone": "",
-"StickCloneAnimator": "",
-"StickPersonEnemy": "",
-"StoneObstacle": ""
-}
+[application]
+
+config/name="Miff - Angry Aliens"
+run/main_scene="res://Scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=600
+window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -145,7 +145,7 @@ func _grow_left(first_spr: Sprite2D, last_spr: Sprite2D):
 
 
 func _create_number() -> Sprite2D:
-    return $ScorePool.get_instance()
+    return $ScorePool.get_instantiate()
 
 
 func _get_texture_for_num(num):

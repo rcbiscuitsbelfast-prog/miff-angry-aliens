@@ -48,7 +48,7 @@ func pool(obj):
 	inactive_nodes_container.add_child(obj)
 
 
-func get_instance():
+func get_instantiate():
 	var obj
 	if inactive_nodes_container.get_child_count() > 0:
 		obj = inactive_nodes_container.get_child(0)
